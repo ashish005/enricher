@@ -1,0 +1,22 @@
+<div class="col-lg-4" ng-repeat="contact in contacts">
+    <div class="contact-box">
+        <a href="profile.html">
+            <div class="col-sm-4">
+                <div class="text-center">
+                    <img alt="image" class="img-circle m-t-xs img-responsive" src="{{contact.pic}}">
+                    <div class="m-t-xs font-bold">{{contact.companyInfo.designation}}</div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3><strong>{{contact.name}}</strong></h3>
+                <p><i class="fa fa-map-marker"></i> {{contact.address}}</p>
+                <address>
+                    <strong>{{contact.companyInfo.companyName}}</strong><br>
+                    {{contact.companyInfo.address}}<br>
+                    <abbr title="Phone">P:</abbr> {{contact.companyInfo.phone}}
+                </address>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+    </div>
+</div>

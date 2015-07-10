@@ -1,0 +1,12 @@
+{
+  "name": "Enricher",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cli-table": "^0.3.0",
+    "express": "latest",
+    "gulp": "latest",
+    "jade": "^1.11.0",
+    "mongoose": "^4.0.6"
+  }
+}
