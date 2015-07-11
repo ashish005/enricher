@@ -15,7 +15,7 @@
                 return {
                     restrict: 'AE',
                     link: function(scope, element) {
-                      var slimscroll = function (options) {
+                      /*var slimscroll = function (options) {
 
                             var defaults = {
 
@@ -467,7 +467,8 @@
 
                             // maintain chainability
                             return this;
-                        }
+                        }*/
+
                         $timeout(function(){
                             element.slimscroll({height: '234px', railOpacity: 0.4});
                         });
