@@ -21,7 +21,7 @@ authController = function(router, mongoose) {
         var register = new registerModel(req.body.register);
         register.save(
             function(err, saved) { // Query in MongoDB via Mongo JS Module
-                res.end( ( err || !saved ) ? err:saved);
+                res.send( ( err || !saved ) ? err:saved);
         });
     });
 }

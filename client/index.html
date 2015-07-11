@@ -10,10 +10,28 @@
      <link href="client/assets/css/animate.css" rel="stylesheet">
      <link href="client/assets/libs/plugins/nggrid/ng-grid.css" rel="stylesheet">
      <link href="client/assets/css/style.css" rel="stylesheet">
+    <style>
+        .horizontal-ol {
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+        .horizontal-ol > li {
+            display: inline-block;
+        }
+        .horizontal-ol > li a {
+            /*color: inherit;*/
+        }
+        .horizontal-ol > li + li::before {
+            padding: 0px 5px;
+            color: #CCC;
+            content: " | ";
+        }
+    </style>
 </head>
-<body>
-   <div page-view></div>
-   <!-- <div ng-view></div>-->
+<body landing-scrollspy id="page-top">
+    <div id="wrapper">
+        <div page-view></div>
+    </div>
     <script data-main="client/app-init-config" src="client/assets/libs/require.js"></script>
 </body>
 </html>

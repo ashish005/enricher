@@ -24,10 +24,19 @@
                         controllerUrl: 'js/auth/controllers/auth.controller'
                     }))
                 .when('/forgot_password', { templateUrl: 'client/js/auth/templates/forgot_password.html' })
-                .when('/home', { templateUrl: 'client/js/components/home/templates/home.html' })
+                //Default Configurations
+                .when('/home', { templateUrl: 'client/js/default/home/templates/home.html' })
+                .when('/home', angularAMD.route({
+                    templateUrl: 'client/js/default/home/templates/home.html',
+                    controllerUrl: 'js/default/home/controllers/home.controller'
+                }))
                 .when('/contacts', angularAMD.route({
                     templateUrl: 'client/js/components/contacts/templates/contacts.html',
                     controllerUrl: 'js/components/contacts/controllers/contacts.controller'
+                }))
+                .when('/admin', angularAMD.route({
+                    templateUrl: 'client/js/admin/register-apps/templates/register-apps.html',
+                    controllerUrl: 'js/admin/register-apps/controllers/register-apps.controller'
                 }))
                 .when('/admin/user-info', angularAMD.route({
                     templateUrl: 'client/js/admin/users-info/templates/users-info.html',
@@ -37,7 +46,7 @@
             }
         ]);
 
-        app.directive('pageView',['$rootScope','$http', '$compile', function($rootScope, $http, $compile){
+        app.directive('pageView',['$rootScope', '$compile', 'appViewModel', function($rootScope, $compile, appViewModel){
             return {
                 restrict: 'AE',
                 replace: 'true',
@@ -45,19 +54,43 @@
                 compile: function(element, attrs) {
                     return function(scope, element, attrs) {
                         function setActiveView(name){
-                            var _activeMaster = template_for(name);
-                            $http.get(_activeMaster.templateUrl).then(function(result){
+                            appViewModel.decideWrapperView(name)
+                                .then(function(result){
                                 element.html(result.data);
                                 $compile(element.contents())($rootScope);
-                            });
+                            }, function(error){});
                         }
                         setActiveView(window.location.hash.replace('#',''));
                         scope.$on('changeMasterView', function(e, args){
-                            setActiveView(args.name)
+                                setActiveView(args.name)
                         });
                     };
                 }
             };
+        }]);
+
+        app.factory('appViewModel',['$http', function($http){
+            var _appModel = {};
+            _appModel.decideWrapperView = function(activeRoute){
+                var _masterView = {
+                    auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['/login', '/register', '/forgot_password'], requiredModules:'' },
+                    admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:'navMenu'},
+                    user:{id:3 , templateUrl:'user-templates.html', viewKeys:['/home','/contacts'], requiredModules:'navMenu'}
+                };
+                var _activeMasterView = _masterView.auth;
+                angular.forEach(_masterView, function (value, key) {
+                    var _activeViewInfo = value.viewKeys.indexOf(activeRoute);
+                    if(_activeViewInfo>-1) {
+                        _activeMasterView = _masterView[key];
+                    }
+                });
+
+                var _basePath = 'client/js/core/templates/';
+                _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
+                return $http.get(_activeMasterView.templateUrl);
+            }
+
+            return _appModel;
         }]);
 
         app.run(['$rootScope', '$compile','$document', function ($rootScope, $compile, $document) {
@@ -81,7 +114,6 @@
             });
 
             $('body').on('click', 'a.collapse-link', function() {
-                debugger;
                 var ibox = $(this).closest('div.ibox');
                 var button = $(this).find('i');
                 var content = ibox.find('div.ibox-content');
@@ -100,34 +132,40 @@
             });
         }]);
 
-        function  template_for(activeRoute){
-            var _masterView = {
-                auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['/login', '/register', '/forgot_password'], requiredModules:'' },
-                admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:'navMenu'},
-                user:{id:3 , templateUrl:'user-templates.html', viewKeys:['/home','/contacts'], requiredModules:'navMenu'}
-            };
-            var _activeMasterView = _masterView.auth;
-            angular.forEach(_masterView, function (value, key) {
-                var _activeViewInfo = value.viewKeys.indexOf(activeRoute);
-                if(_activeViewInfo>-1) {
-                    _activeMasterView = _masterView[key];
-                }
-            });
-
-            var _basePath = 'client/js/core/templates/';
-            _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
-/*
-            if(window._activeMasterView && (window._activeMasterView != _activeMasterView.id)){
-                window._activeMasterView = _activeMasterView.id;
-                window.location.reload();
-            }*/
-            return _activeMasterView;
-        }
-
         function requireDependency(){
-            require(['navMenu'], function () {
-                app.requires.push('navMenu');
-                return angularAMD.bootstrap(app);
+            require(['navMenu','fundsInfo', 'chatWindow'], function () {
+                app.requires.push('navMenu', 'fundsInfo', 'enricher.chat');
+                //return angularAMD.bootstrap(app);
+                var _req = {method: 'GET', url: 'api/init'};
+                var initInjector = angular.injector(["ng"]);
+                var $http = initInjector.get("$http");
+
+                $http(_req).then(function (resp) {
+                    var _appInfo = resp.data[0];
+                    app.constant('menu', _appInfo.menu);
+                    _appInfo.fundInfo = [
+                        {key:'', value:'INRAxis', description:''},
+                        {key:'', value:'INRBaroda Pioneer', description:''},
+                        {key:'', value:'INRBirla Sun Life', description:''},
+                        {key:'', value:'INRBNP Paribas', description:''},
+                        {key:'', value:'INRBOI AXA', description:''},
+                        {key:'', value:'INRCanara Robeco', description:''},
+                        {key:'', value:'INRDeutsche', description:''},
+                        {key:'', value:'INRDSP BlackRock', description:''},
+                        {key:'', value:'INREdelweiss', description:''},
+                        {key:'', value:'INREscorts', description:''},
+                        {key:'', value:'INRFranklin Templeton', description:''},
+                        {key:'', value:'INRGoldman Sachs', description:''},
+                        {key:'', value:'INRHDFC', description:''},
+                        {key:'', value:'INRHSBC', description:''},
+                        {key:'', value:'INRICICI Prudential', description:''},
+                        {key:'', value:'INRIDBI', description:''}
+                    ];
+                    app.constant('fundInfoConstant', _appInfo.fundInfo);
+                    return angularAMD.bootstrap(app);
+                }, function (error) {
+                    throw new Error('Config file has error : ' + error);
+                });
             });
         };
 

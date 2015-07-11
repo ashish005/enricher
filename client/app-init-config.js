@@ -10,22 +10,28 @@ require.config({
         ngRoute: 'assets/libs/angular/angular-route',
         jQuery: 'assets/libs/jquery/jquery-2.1.1.min',
         bootstrap:'assets/libs/bootstrap/bootstrap.min',
-
+        'ui-bootstrap-tpls':'assets/libs/bootstrap/ui-bootstrap-tpls-0.12.0.min',
         //Third Party Plugins
         ngGrid:'assets/libs/plugins/nggrid/ng-grid-2.0.3.min',
         slimscroll:'assets/libs/plugins/slimscroll/jquery.slimscroll.min',
         //Application Specific
         auth:'js/auth/auth-main',
         navMenu:'js/plugins/nav-menu',
+        fundsInfo:'js/plugins/funds-info/funds-info.directive',
 
         //Custom Plugins
+        appViewSetup:'js/plugins/app-view-setup',
         contacts:'js/plugins/contacts/contacts.directive',
-        iboxTools:'js/plugins/ibox-tools/ibox-tools.directive'
+        iboxTools:'js/plugins/ibox-tools/ibox-tools.directive',
+        chatWindow:'js/plugins/chat-window//chat-window'
     },
     shim: {
         angularAMD: ['angular'],
         angular: {
             exports: "angular"
+        },
+        chatWindow: {
+            deps: ["angular"]
         },
         ngRoute: {
             deps: ["angular"]
@@ -34,6 +40,9 @@ require.config({
             deps:['jQuery']
         },
         slimscroll:{
+            deps:['jQuery']
+        },
+        appViewSetup:{
             deps:['jQuery']
         },
         auth:{
@@ -45,12 +54,15 @@ require.config({
         navMenu:{
             deps: ['slimscroll']//'metisMenu',
         },
+        'ui-bootstrap-tpls':{
+            deps: ['jQuery']
+        },
         ngGrid:{
             deps:['jQuery', 'angular']
         },
         enricher:{
-            deps:['jQuery', 'bootstrap', 'angular', 'ngRoute', 'ngGrid']
+            deps:['jQuery', 'bootstrap','ui-bootstrap-tpls', 'angular', 'ngRoute', 'ngGrid', 'chatWindow']
         }
     },
-    deps: ['enricher']
+    deps: ['enricher', 'appViewSetup']
 });
