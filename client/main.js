@@ -7,9 +7,7 @@
     define(['angularAMD'], function (angularAMD) {//'navMenu'
         var angular = require("angular");
         var _appName = "enricher";
-
-        var app =  angular.module(_appName, ['ngRoute', 'ngGrid']);
-
+        var app =  angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'ngGrid']);
         app.config(['$routeProvider', function ($routeProvider)
             {
                 $routeProvider
@@ -134,13 +132,14 @@
 
         function requireDependency(){
             require(['navMenu','fundsInfo', 'chatWindow'], function () {
-                app.requires.push('navMenu', 'fundsInfo', 'enricher.chat');
-                //return angularAMD.bootstrap(app);
+                app.requires.push('navMenu', 'fundsInfo', 'enricher.chat', 'enricher.core', 'enricher.rightSideBar');
+
                 var _req = {method: 'GET', url: 'api/init'};
                 var initInjector = angular.injector(["ng"]);
                 var $http = initInjector.get("$http");
 
-                $http(_req).then(function (resp) {
+                $http(_req).then(function (resp)
+                {
                     var _appInfo = resp.data[0];
                     app.constant('menu', _appInfo.menu);
                     _appInfo.fundInfo = [

@@ -10,14 +10,18 @@ require.config({
         ngRoute: 'assets/libs/angular/angular-route',
         jQuery: 'assets/libs/jquery/jquery-2.1.1.min',
         bootstrap:'assets/libs/bootstrap/bootstrap.min',
-        'ui-bootstrap-tpls':'assets/libs/bootstrap/ui-bootstrap-tpls-0.12.0.min',
+        'ui-bootstrap':'assets/libs/bootstrap/ui-bootstrap-tpls-0.12.0.min',
         //Third Party Plugins
         ngGrid:'assets/libs/plugins/nggrid/ng-grid-2.0.3.min',
         slimscroll:'assets/libs/plugins/slimscroll/jquery.slimscroll.min',
+
+        'enricher-core':'js/core/core.directives',
+
         //Application Specific
         auth:'js/auth/auth-main',
         navMenu:'js/plugins/nav-menu',
         fundsInfo:'js/plugins/funds-info/funds-info.directive',
+        rightSideBar:'js/plugins/right-side-bar/right-side-bar.directive',
 
         //Custom Plugins
         appViewSetup:'js/plugins/app-view-setup',
@@ -29,6 +33,9 @@ require.config({
         angularAMD: ['angular'],
         angular: {
             exports: "angular"
+        },
+        'enricher-core': {
+            deps: ["angular"]
         },
         chatWindow: {
             deps: ["angular"]
@@ -54,14 +61,17 @@ require.config({
         navMenu:{
             deps: ['slimscroll']//'metisMenu',
         },
-        'ui-bootstrap-tpls':{
-            deps: ['jQuery']
+        'ui-bootstrap':{
+            deps: ['jQuery', 'angular']
+        },
+        rightSideBar:{
+            deps: ['angular', 'ui-bootstrap']
         },
         ngGrid:{
             deps:['jQuery', 'angular']
         },
         enricher:{
-            deps:['jQuery', 'bootstrap','ui-bootstrap-tpls', 'angular', 'ngRoute', 'ngGrid', 'chatWindow']
+            deps:['jQuery', 'bootstrap','ui-bootstrap', 'angular', 'ngRoute', 'ngGrid', 'chatWindow', 'enricher-core', 'rightSideBar']
         }
     },
     deps: ['enricher', 'appViewSetup']

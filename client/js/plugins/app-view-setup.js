@@ -37,16 +37,6 @@ $(document).ready(function () {
         }
     });
 
-    // Move right sidebar top after scroll
-    $(window).scroll(function(){
-        if ($(window).scrollTop() > 0 && !$('body').hasClass('fixed-nav') ) {
-            $('#right-sidebar').addClass('sidebar-top');
-        } else {
-            $('#right-sidebar').removeClass('sidebar-top');
-        }
-    });
-
-
     setTimeout(function(){
         fix_height();
     })

@@ -210,17 +210,7 @@
                     //SmoothlyMenu();
                 });
 
-                // Open close right sidebar
-                $('.right-sidebar-toggle').click(function () {
-                    $('#right-sidebar').toggleClass('sidebar-open');
-                });
 
-                // Initialize slimscroll for right sidebar
-                $('.sidebar-container').slimScroll({
-                    height: '100%',
-                    railOpacity: 0.4,
-                    wheelStep: 10
-                });
 
                 // Open close small chat
                 $('.open-small-chat').click(function () {
@@ -264,19 +254,6 @@
             templateUrl: 'client/js/plugins/view-content.html'
         };
     })
-    /*navMenu.directive('fundsInfo', ['fundInfoConstant', function(fundInfoConstant) {
-        return {
-            restrict: 'AE',
-            templateUrl: 'client/js/plugins/funds-info.html',
-            /!*template: '<div class="row wrapper border-bottom white-bg page-heading">\
-            <ol class="horizontal-ol">\
-            <li ng-repeat="fund in fundInfo"><a href="{{fund.key}}"><i class="fa fa-th-large"></i>\
-            <span class="nav-label">{{fund.value}}</span></a></li></ol></div>',*!/
-            controller:function($scope){
-                $scope.fundInfo = fundInfoConstant;
-            }
-        };
-    }]);*/
     navMenu.directive('appFooter', function() {
         return {
             restrict: 'AE',
