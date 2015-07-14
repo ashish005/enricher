@@ -1,0 +1,49 @@
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="dynFilterGridController" ng-init="init()">
+    <div class="ibox-content m-b-sm border-bottom">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="product_name">Product Name</label>
+                    <input id="product_name" name="product_name" value="" placeholder="Product Name" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="control-label" for="price">Price</label>
+                    <input id="price" name="price" value="" placeholder="Price" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label class="control-label" for="quantity">Quantity</label>
+                    <input id="quantity" name="quantity" value="" placeholder="Quantity" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="status">Status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="1" selected="">Enabled</option>
+                        <option value="0">Disabled</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ng Grid - Basic Example</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <p>
+                        Ng Grid is a Angular native directive control that provides solutions for representing and manipulating tabular data on the web.
+                    </p>
+                    <div class="gridStyle" ng-grid="ngOptions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

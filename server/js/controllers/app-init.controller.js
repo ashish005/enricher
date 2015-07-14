@@ -23,13 +23,13 @@ appInitController = function(router, mongoose) {
     });
 
     router.get('/init', function(req, res) {
-        console.log(req);
+        console.log('init Request');
         init.find({}, function (err, data) {
             res.send(data);
         });
     });
 
-    router.post('/init', function (req, res){
+    router.post('/initInfo', function (req, res){
         res.header("Access-Control-Allow-Origin", "http://localhost");
         res.header("Access-Control-Allow-Methods", "GET, POST");
 

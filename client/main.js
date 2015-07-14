@@ -16,6 +16,11 @@
                         templateUrl: 'client/js/auth/templates/login.html',
                         controllerUrl: 'js/auth/controllers/auth.controller'
                     }))
+                    .when('/nfos',
+                    angularAMD.route({
+                        templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
+                        controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
+                    }))
                 .when('/register',
                     angularAMD.route({
                         templateUrl: 'client/js/auth/templates/register.html',

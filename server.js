@@ -32,6 +32,8 @@ server.use('/', express.static(__dirname + '/'));
 
 mongoose.connect('mongodb://localhost:27017/enricherDB', function(error, db) {
     console.log("mongo connected");
+    console.log('error: ' + error);
+    console.log('success: ' + db);
 });
 
 // ROUTES FOR OUR API
