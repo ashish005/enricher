@@ -35,7 +35,7 @@ require.config({
             exports: "angular"
         },
         'enricher-core': {
-            deps: ["angular"]
+            deps: ["angular", 'ngRoute']
         },
         chatWindow: {
             deps: ["angular"]
@@ -71,8 +71,8 @@ require.config({
             deps:['jQuery', 'angular']
         },
         enricher:{
-            deps:['jQuery', 'bootstrap','ui-bootstrap', 'angular', 'ngRoute', 'ngGrid', 'chatWindow', 'enricher-core', 'rightSideBar']
+            deps:['jQuery', 'bootstrap','ui-bootstrap', 'ngGrid', 'enricher-core', 'auth'] //'chatWindow', 'rightSideBar'
         }
     },
-    deps: ['enricher', 'appViewSetup']
+    deps: ['enricher']
 });

@@ -3,7 +3,8 @@
  */
     var express = require('express'),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose')
+    mongoose = require('mongoose'),
+    http = require('http');
 
     var  server = express(); // Set up an express server (but not starting it yet)
 
@@ -43,7 +44,12 @@ require('./server/js/routers/server.routers')(server, router, mongoose);//Define
 
 
 // START THE SERVER
+/*http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write('hello, i know nodejitsu.')
+    res.end();
+}).listen(server.get('port'));*/
+
 server.listen(server.get('port'), function () {
     console.log('I am listening ' + server.get('port'));
-    //require('./server/document')(router.stack, 'express');
-});
+ });

@@ -3,7 +3,7 @@
  */
 (function(define, angular){
     define(['enricher'], function (app) {
-        app.register.controller('homeController', ['$scope', '$rootScope', '$http',
+        app.controller('homeController', ['$scope', '$rootScope', '$http',
             function ($scope, $rootScope, $http)
             {
                 $scope.ngOptions = { data: 'ngData' };

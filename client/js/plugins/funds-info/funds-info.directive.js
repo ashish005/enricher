@@ -4,19 +4,17 @@
 (function () {
     "use strict";
     define(['enricher'], function (app) {
-        var fundsInfo = angular.module('fundsInfo', []);
-        fundsInfo.directive('fundsInfo', ['fundInfoConstant', function(fundInfoConstant) {
+        app.directive('fundsInfo', function() {
             return {
                 restrict: 'AE',
+                scope:{
+                    record:'='
+                },
                 templateUrl: 'client/js/plugins/funds-info/funds-info.html',
-                /*template: '<div class="row wrapper border-bottom white-bg page-heading">\
-                 <ol class="horizontal-ol">\
-                 <li ng-repeat="fund in fundInfo"><a href="{{fund.key}}"><i class="fa fa-th-large"></i>\
-                 <span class="nav-label">{{fund.value}}</span></a></li></ol></div>',*/
                 controller:function($scope){
-                    $scope.fundInfo = fundInfoConstant;
+                    $scope.fundInfo = $scope.record;
                 }
             };
-        }]);
+        });
     });
 })();

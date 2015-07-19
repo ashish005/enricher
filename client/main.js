@@ -1,106 +1,30 @@
 /**
- * Created by wizdev on 6/24/2015.
+ * Created by wizdev on 7/18/2015.
  */
 (function (window) {
     "use strict";
     //window.name = "NG_DEFER_BOOTSTRAP!";
-    define(['angularAMD'], function (angularAMD) {//'navMenu'
+    define(['angularAMD'], function (angularAMD) {
         var angular = require("angular");
         var _appName = "enricher";
-        var app =  angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'ngGrid']);
-        app.config(['$routeProvider', function ($routeProvider)
-            {
-                $routeProvider
-                .when('/login',
-                    angularAMD.route({
-                        templateUrl: 'client/js/auth/templates/login.html',
-                        controllerUrl: 'js/auth/controllers/auth.controller'
-                    }))
-                    .when('/nfos',
-                    angularAMD.route({
-                        templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
-                        controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
-                    }))
-                .when('/register',
-                    angularAMD.route({
-                        templateUrl: 'client/js/auth/templates/register.html',
-                        controllerUrl: 'js/auth/controllers/auth.controller'
-                    }))
-                .when('/forgot_password', { templateUrl: 'client/js/auth/templates/forgot_password.html' })
-                //Default Configurations
-                .when('/home', { templateUrl: 'client/js/default/home/templates/home.html' })
+        var app = angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'enricher.auth', 'enricher.core']);
+
+        app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+            //$locationProvider.html5Mode(true);
+            $routeProvider
                 .when('/home', angularAMD.route({
                     templateUrl: 'client/js/default/home/templates/home.html',
                     controllerUrl: 'js/default/home/controllers/home.controller'
                 }))
-                .when('/contacts', angularAMD.route({
-                    templateUrl: 'client/js/components/contacts/templates/contacts.html',
-                    controllerUrl: 'js/components/contacts/controllers/contacts.controller'
+                .when('/nfos', angularAMD.route({
+                    templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
+                    controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
                 }))
-                .when('/admin', angularAMD.route({
-                    templateUrl: 'client/js/admin/register-apps/templates/register-apps.html',
-                    controllerUrl: 'js/admin/register-apps/controllers/register-apps.controller'
-                }))
-                .when('/admin/user-info', angularAMD.route({
-                    templateUrl: 'client/js/admin/users-info/templates/users-info.html',
-                    controllerUrl: 'js/admin/users-info/controllers/users-info.controller'
-                }))
-                .otherwise({ redirectTo: '/login' }) //Handle all exceptions
-            }
-        ]);
-
-        app.directive('pageView',['$rootScope', '$compile', 'appViewModel', function($rootScope, $compile, appViewModel){
-            return {
-                restrict: 'AE',
-                replace: 'true',
-                transclude:true,
-                compile: function(element, attrs) {
-                    return function(scope, element, attrs) {
-                        function setActiveView(name){
-                            appViewModel.decideWrapperView(name)
-                                .then(function(result){
-                                element.html(result.data);
-                                $compile(element.contents())($rootScope);
-                            }, function(error){});
-                        }
-                        setActiveView(window.location.hash.replace('#',''));
-                        scope.$on('changeMasterView', function(e, args){
-                                setActiveView(args.name)
-                        });
-                    };
-                }
-            };
+                .otherwise({redirectTo: '/login'});//Handle all exceptions
         }]);
 
-        app.factory('appViewModel',['$http', function($http){
-            var _appModel = {};
-            _appModel.decideWrapperView = function(activeRoute){
-                var _masterView = {
-                    auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['/login', '/register', '/forgot_password'], requiredModules:'' },
-                    admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:'navMenu'},
-                    user:{id:3 , templateUrl:'user-templates.html', viewKeys:['/home','/contacts'], requiredModules:'navMenu'}
-                };
-                var _activeMasterView = _masterView.auth;
-                angular.forEach(_masterView, function (value, key) {
-                    var _activeViewInfo = value.viewKeys.indexOf(activeRoute);
-                    if(_activeViewInfo>-1) {
-                        _activeMasterView = _masterView[key];
-                    }
-                });
-
-                var _basePath = 'client/js/core/templates/';
-                _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
-                return $http.get(_activeMasterView.templateUrl);
-            }
-
-            return _appModel;
-        }]);
-
-        app.run(['$rootScope', '$compile','$document', function ($rootScope, $compile, $document) {
-            require(['iboxTools']);
-
+        app.run(['$rootScope', function ($rootScope) {
             $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
-                $rootScope.$emit('changeMasterView', { name: nextRoute.originalPath });
                 console.log('$routeChangeStart');
             });
 
@@ -115,38 +39,17 @@
             $rootScope.$on('$viewContentLoaded', function () {
                 console.log('$viewContentLoaded');
             });
-
-            $('body').on('click', 'a.collapse-link', function() {
-                var ibox = $(this).closest('div.ibox');
-                var button = $(this).find('i');
-                var content = ibox.find('div.ibox-content');
-                content.slideToggle(200);
-                button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                ibox.toggleClass('').toggleClass('border-bottom');
-                setTimeout(function () {
-                    ibox.resize();
-                    ibox.find('[id^=map-]').resize();
-                }, 50);
-            });
-
-            // Close ibox function
-            $('body').on('click', 'a.close-link', function() {
-                $(this).closest('div.ibox').remove();
-            });
         }]);
 
-        function requireDependency(){
-            require(['navMenu','fundsInfo', 'chatWindow'], function () {
-                app.requires.push('navMenu', 'fundsInfo', 'enricher.chat', 'enricher.core', 'enricher.rightSideBar');
-
+        app.controller('appViewController', ['$rootScope', '$scope', function ($rootScope, $scope) {
+            $scope.initEnricher = function() {
                 var _req = {method: 'GET', url: 'api/init'};
                 var initInjector = angular.injector(["ng"]);
                 var $http = initInjector.get("$http");
-
                 $http(_req).then(function (resp)
                 {
                     var _appInfo = resp.data[0];
-                    app.constant('menu', _appInfo.menu);
+                    $rootScope.menuData = _appInfo.menu;
                     _appInfo.fundInfo = [
                         {key:'', value:'INRAxis', description:''},
                         {key:'', value:'INRBaroda Pioneer', description:''},
@@ -165,16 +68,118 @@
                         {key:'', value:'INRICICI Prudential', description:''},
                         {key:'', value:'INRIDBI', description:''}
                     ];
-                    app.constant('fundInfoConstant', _appInfo.fundInfo);
-                    return angularAMD.bootstrap(app);
+                    $rootScope.fundInfo = _appInfo.fundInfo;
                 }, function (error) {
                     throw new Error('Config file has error : ' + error);
                 });
+            };
+        }]);
+
+        app.directive('pageView', ['$rootScope', '$compile', '$http', '$q',  function ($rootScope, $compile, $http, $q) {
+            return {
+                restrict: 'AE',
+                replace: true,
+                compile: function(element, attrs) {
+                    return function(scope, element, attrs) {
+                        var _basePath = 'client/js/core/templates/';
+                        var _masterView = {
+                            auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['/login', '/register', '/forgot_password'], requiredModules:[] },
+                            admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:[] },
+                            user:{id:3 , templateUrl:'user-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu', 'chatWindow', 'rightSideBar', 'fundsInfo']},
+                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu']}
+                        };
+                        var _activeMasterView = _masterView.auth;
+                        _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
+
+                        require(_activeMasterView.requiredModules, function(){
+                            $http.get(_activeMasterView.templateUrl).then(function(result){
+                                    element.html(result.data);
+                                    $compile(element.contents())($rootScope);
+
+                                }, function(error){}
+                            );
+                        });
+                    };
+                }
+            };
+        }]);
+
+        app.config(function( $controllerProvider, $provide, $compileProvider ) {
+                // Let's keep the older references.
+                app._controller = app.controller;
+                app._service = app.service;
+                app._factory = app.factory;
+                app._value = app.value;
+                app._directive = app.directive;
+
+                // Provider-based controller.
+                app.controller = function( name, constructor ) {
+                    $controllerProvider.register( name, constructor );
+                    return(this);
+                };
+
+                // Provider-based service.
+                app.service = function( name, constructor ) {
+                    $provide.service( name, constructor );
+                    return(this);
+                };
+
+                // Provider-based factory.
+                app.factory = function( name, factory ) {
+                    $provide.factory( name, factory );
+                    return(this);
+                };
+
+                // Provider-based value.
+                app.value = function( name, value ) {
+                    $provide.value( name, value );
+                    return(this);
+                };
+
+                // Provider-based directive.
+                app.directive = function( name, factory ) {
+                    $compileProvider.directive( name, factory );
+                    return(this);
+                };
             });
-        };
 
         angular.element(document).ready(function () {
-            requireDependency();
+            $('<div ng-controller="appViewController" ng-init="initEnricher()"><div id="wrapper" page-view></div></div>').appendTo('body');
+            return angular.bootstrap($('body'), [_appName]);
+            /*var _req = {method: 'GET', url: 'api/init'};
+            var initInjector = angular.injector(["ng"]);
+            var $http = initInjector.get("$http");
+            $http(_req).then(function (resp)
+            {
+                var _appInfo = resp.data[0];
+                app.constant('menu', _appInfo.menu);
+                _appInfo.fundInfo = [
+                    {key:'', value:'INRAxis', description:''},
+                    {key:'', value:'INRBaroda Pioneer', description:''},
+                    {key:'', value:'INRBirla Sun Life', description:''},
+                    {key:'', value:'INRBNP Paribas', description:''},
+                    {key:'', value:'INRBOI AXA', description:''},
+                    {key:'', value:'INRCanara Robeco', description:''},
+                    {key:'', value:'INRDeutsche', description:''},
+                    {key:'', value:'INRDSP BlackRock', description:''},
+                    {key:'', value:'INREdelweiss', description:''},
+                    {key:'', value:'INREscorts', description:''},
+                    {key:'', value:'INRFranklin Templeton', description:''},
+                    {key:'', value:'INRGoldman Sachs', description:''},
+                    {key:'', value:'INRHDFC', description:''},
+                    {key:'', value:'INRHSBC', description:''},
+                    {key:'', value:'INRICICI Prudential', description:''},
+                    {key:'', value:'INRIDBI', description:''}
+                ];
+                app.constant('fundInfoConstant', _appInfo.fundInfo);
+
+                // Load an element that uses controller Ctrl
+                $('<div ng-controller="appViewController" ng-init="initEnricher()">{{name}}<div id="wrapper" page-view></div></div>').appendTo('body');
+                // Bootstrap with Foo
+                return angular.bootstrap($('body'), [_appName]);
+            }, function (error) {
+                throw new Error('Config file has error : ' + error);
+            });*/
         });
         return app;
     });

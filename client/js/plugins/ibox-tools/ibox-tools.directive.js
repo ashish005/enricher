@@ -7,7 +7,8 @@
 (function () {
     "use strict";
     define(['enricher'], function (app) {
-        app.register.directive('iboxTools',['$timeout', function ($timeout) {
+        app
+            .directive('iboxTools',['$timeout', function ($timeout) {
             return {
                 restrict: 'A',
                 scope: true,

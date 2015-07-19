@@ -3,7 +3,7 @@
  */
 (function(define, angular){
     define(['enricher'], function (app) {
-        app.register.controller('dynFilterGridController', ['$scope', '$rootScope', '$http',
+        app.controller('dynFilterGridController', ['$scope', '$rootScope', '$http',
             function ($scope, $rootScope, $http)
             {
                 $scope.ngOptions = {};

@@ -1,9 +1,12 @@
-<div style="margin:0px;">
-    <left-nav></left-nav>
+
+{{name}}
+<div>
+    <div left-nav menu-data="menuData"></div>
     <div id="page-wrapper" class="gray-bg">
         <div top-search></div>
         <div ng-view></div>
-        <div funds-info></div>
+        <div funds-info record="fundInfo"></div>
         <div chat></div>
+        <div app-footer></div>
     </div>
 </div>
