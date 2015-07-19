@@ -48,26 +48,8 @@
                 var $http = initInjector.get("$http");
                 $http(_req).then(function (resp)
                 {
-                    var _appInfo = resp.data[0];
+                    var _appInfo = resp.data;
                     $rootScope.menuData = _appInfo.menu;
-                    _appInfo.fundInfo = [
-                        {key:'', value:'INRAxis', description:''},
-                        {key:'', value:'INRBaroda Pioneer', description:''},
-                        {key:'', value:'INRBirla Sun Life', description:''},
-                        {key:'', value:'INRBNP Paribas', description:''},
-                        {key:'', value:'INRBOI AXA', description:''},
-                        {key:'', value:'INRCanara Robeco', description:''},
-                        {key:'', value:'INRDeutsche', description:''},
-                        {key:'', value:'INRDSP BlackRock', description:''},
-                        {key:'', value:'INREdelweiss', description:''},
-                        {key:'', value:'INREscorts', description:''},
-                        {key:'', value:'INRFranklin Templeton', description:''},
-                        {key:'', value:'INRGoldman Sachs', description:''},
-                        {key:'', value:'INRHDFC', description:''},
-                        {key:'', value:'INRHSBC', description:''},
-                        {key:'', value:'INRICICI Prudential', description:''},
-                        {key:'', value:'INRIDBI', description:''}
-                    ];
                     $rootScope.fundInfo = _appInfo.fundInfo;
                 }, function (error) {
                     throw new Error('Config file has error : ' + error);
