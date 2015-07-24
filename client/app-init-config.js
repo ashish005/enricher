@@ -12,9 +12,8 @@ require.config({
         bootstrap:'assets/libs/bootstrap/bootstrap.min',
         'ui-bootstrap':'assets/libs/bootstrap/ui-bootstrap-tpls-0.12.0.min',
         //Third Party Plugins
-        ngGrid:'assets/libs/plugins/nggrid/ng-grid-2.0.3.min',
+        uiGrid:'assets/libs/plugins/ui-grid/ui-grid.min',
         slimscroll:'assets/libs/plugins/slimscroll/jquery.slimscroll.min',
-
         'enricher-core':'js/core/core.directives',
 
         //Application Specific
@@ -22,12 +21,13 @@ require.config({
         navMenu:'js/plugins/nav-menu',
         fundsInfo:'js/plugins/funds-info/funds-info.directive',
         rightSideBar:'js/plugins/right-side-bar/right-side-bar.directive',
+        dynTabGrid:'js/plugins/dyn-tab-grid/enricher-dyn-tab-grid.directive',
 
         //Custom Plugins
-        appViewSetup:'js/plugins/app-view-setup',
         contacts:'js/plugins/contacts/contacts.directive',
         iboxTools:'js/plugins/ibox-tools/ibox-tools.directive',
-        chatWindow:'js/plugins/chat-window//chat-window'
+        chatWindow:'js/plugins/chat-window/chat-window',
+        fundFilters:'js/plugins/fund-filters/fund-filters.directive',
     },
     shim: {
         angularAMD: ['angular'],
@@ -67,11 +67,11 @@ require.config({
         rightSideBar:{
             deps: ['angular', 'ui-bootstrap']
         },
-        ngGrid:{
+        uiGrid:{
             deps:['jQuery', 'angular']
         },
         enricher:{
-            deps:['jQuery', 'bootstrap','ui-bootstrap', 'ngGrid', 'enricher-core', 'auth'] //'chatWindow', 'rightSideBar'
+            deps:['jQuery', 'bootstrap','ui-bootstrap', 'uiGrid', 'enricher-core', 'auth']
         }
     },
     deps: ['enricher']

@@ -2,7 +2,7 @@
  * Created by wizdev on 7/10/2015.
  */
 (function(define, angular){
-    define(['enricher'], function (app) {
+    define(['enricher', 'dynTabGrid'], function (app) {
         app.controller('homeController', ['$scope', '$rootScope', '$http',
             function ($scope, $rootScope, $http)
             {
@@ -26,6 +26,8 @@
                         {Name: "John", Age: 48, Position: 'Marketing manager', Status: 'deactive', Date: '09.10.2014'},
                         {Name: "Berg", Age: 19, Position: 'UI/UX Designer', Status: 'active', Date: '12.11.2013'}
                     ];
+
+
                 }
             }
         ]);

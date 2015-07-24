@@ -1,0 +1,40 @@
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>Fund Category Returns</h5>
+        <div ibox-tools></div>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-sm-9 m-b-xs">
+                <div data-toggle="buttons" class="btn-group">
+                    <label class="btn btn-sm btn-white" ng-repeat="(key, info) in serviceResp" data-key="{{key}}"><input id="option1" name="options" type="radio"> {{info.title}} </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group"><input placeholder="Search" class="input-sm form-control" type="text" ng-model="searchText"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+            </div>
+        </div>
+        <div class="row">
+            <!--<div class="table-responsive" style="height: 100%;width:100%;" ui-grid="ngOptions"></div>-->
+            <table class="table table-hover no-margins">
+                <thead>
+                <tr>
+                    <th>1 Year Ending 21/07/2015</th>
+                    <th>Cat. Avg.(%pa)</th>
+                    <th>Best Fund (%pa)</th>
+                    <th>Worst Fund (%pa)</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="activeFund in tabGridRec | filter:searchText">
+                        <td>{{activeFund.ending}}</td>
+                        <td>{{activeFund.cat_avg}}</td>
+                        <td><span class="label" ng-class="getCSSClass(activeFund.best_fund)">{{activeFund.best_fund}}</span></td>
+                        <td><span class="label" ng-class="getCSSClass(activeFund.worst_fund)">{{activeFund.worst_fund}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

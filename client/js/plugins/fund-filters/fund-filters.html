@@ -1,0 +1,12 @@
+<div class="ibox-content m-b-sm border-bottom">
+    <div class="row">
+        <div class="col-sm-3" ng-repeat="fundfilter in fundFilters">
+            <div class="form-group">
+                <label class="control-label" for="{{fundfilter.name}}">{{fundfilter.name}}</label>
+                <select name="{{fundfilter.name}}" id="{{fundfilter.name}}" class="form-control">
+                    <option ng-repeat="(_index, info) in fundfilter.data" value="{{info.id}}">{{info.value}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

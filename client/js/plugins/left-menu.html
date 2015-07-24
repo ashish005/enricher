@@ -29,7 +29,7 @@
         <!--<button type="submit" ng-click="submitMenu()">Submit</button>-->
         <ul class="nav metismenu" id="side-menu1">
             <li ng-repeat="menu in navMenu">
-                <a href="{{menu.routeTo}}"><i class="fa {{menu.iconClass}}"></i> <span class="nav-label">{{menu.text}}</span><span class="{{menu.extraTemplate.css}}">{{menu.extraTemplate.value}}</span></a>
+                <a ng-href="{{menu.routeTo}}"><i class="fa {{menu.iconClass}}"></i> <span class="nav-label">{{menu.text}}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-if="menu.childItems">
                     <li ng-repeat="childMenu in menu.childItems"><a href="{{childMenu.routeTo}}">{{childMenu.text}}</a></li>
                 </ul>

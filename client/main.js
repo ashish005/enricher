@@ -7,7 +7,15 @@
     define(['angularAMD'], function (angularAMD) {
         var angular = require("angular");
         var _appName = "enricher";
-        var app = angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'enricher.auth', 'enricher.core']);
+        var app = angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'enricher.auth', 'enricher.core', 'ui.grid']);
+
+        var _pluginOptions ={
+            'dynamicFilterGrid':{
+                templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
+                controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
+            }
+        }
+
 
         app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             //$locationProvider.html5Mode(true);
@@ -16,10 +24,8 @@
                     templateUrl: 'client/js/default/home/templates/home.html',
                     controllerUrl: 'js/default/home/controllers/home.controller'
                 }))
-                .when('/nfos', angularAMD.route({
-                    templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
-                    controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
-                }))
+                .when('/nfos', angularAMD.route(_pluginOptions.dynamicFilterGrid))
+                .when('/fundPerformers/:name', angularAMD.route(_pluginOptions.dynamicFilterGrid))
                 .otherwise({redirectTo: '/login'});//Handle all exceptions
         }]);
 
@@ -49,7 +55,59 @@
                 $http(_req).then(function (resp)
                 {
                     var _appInfo = resp.data;
-                    $rootScope.menuData = _appInfo.menu;
+                    var _menu = [
+                        {
+                            childItems: null,
+                            iconClass: "fa-th-large",
+                            key: "home",
+                            routeTo:'#/',
+                            template: "<span class='label label-warning pull-right'>16/24</span>",
+                            text: "Home"
+                        },
+                        {
+                            childItems: [
+                                {key: "tg", text: "Top Gainers", routeTo:'#/fundPerformers/gainer'},
+                                {key: "tl", text: "Top Loosers", routeTo:'#/fundPerformers/looser',}
+                            ],
+                            iconClass: "fa-th-large",
+                            key: "fp",
+                            template: "<span class='label label-warning pull-right'>16/24</span>",
+                            text: "Fund Performers"
+                        },
+                        {
+                            childItems: null,
+                            iconClass: "fa-diamond",
+                            key: "nfo",
+                            routeTo:'#/nfos',
+                            template: "<span class='label label-warning pull-right'>16/24</span>",
+                            text: "NFOs"
+                        },
+                        {
+                            childItems: null,
+                            iconClass: "fa-bar-chart-o",
+                            key: "dvdnts",
+                            template: "<span class='label label-warning pull-right'>16/24</span>",
+                            text: "Dividends"
+                        },
+                        {
+                            childItems: null,
+                            iconClass: "fa-bar-chart-o",
+                            key: "indecs",
+                            template: "<span class='label label-warning pull-right'>16/24</span>",
+                            text: "Indices"
+                        },
+                        {
+                            childItems: [
+                                {key: "fs", text: "Fund Search"},
+                                {key: "mft", text: "MF Tools"}
+                            ],
+                            iconClass: "fa-bar-chart-o",
+                            key: "tools",
+                            template: "<span class='label label-warning pull-right'>16/24</span>",
+                            text: "Tools"
+                        }
+                    ];
+                    $rootScope.menuData = _menu;// _appInfo.menu;
                     $rootScope.fundInfo = _appInfo.fundInfo;
                 }, function (error) {
                     throw new Error('Config file has error : ' + error);
@@ -66,11 +124,11 @@
                         var _basePath = 'client/js/core/templates/';
                         var _masterView = {
                             auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['/login', '/register', '/forgot_password'], requiredModules:[] },
-                            admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:[] },
+                            admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:['navMenu'] },
                             user:{id:3 , templateUrl:'user-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu', 'chatWindow', 'rightSideBar', 'fundsInfo']},
-                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu']}
+                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu', 'fundsInfo', 'iboxTools']}
                         };
-                        var _activeMasterView = _masterView.auth;
+                        var _activeMasterView = _masterView.default;
                         _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
 
                         require(_activeMasterView.requiredModules, function(){
