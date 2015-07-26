@@ -7,12 +7,11 @@
             function ($scope, $rootScope, $http, $routeParams)
             {
                 var _routeParam =  $routeParams.name;
-                $scope.ngOptions={};
-
                 var _httpRequest = {method: 'GET', url: '/api/funds/'+ _routeParam};
+                $scope.ngOptions = {};
                 $http(_httpRequest).
                     success(function(data, status, headers, config) {
-                        $scope.ngOptions.data =  data;
+                        $scope.ngOptions.updateGrid(data);
                     }).
                     error(function(data, status, headers, config) {
                     });
