@@ -130,7 +130,6 @@
                         };
                         var _activeMasterView = _masterView.default;
                         _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
-
                         require(_activeMasterView.requiredModules, function(){
                             $http.get(_activeMasterView.templateUrl).then(function(result){
                                     element.html(result.data);

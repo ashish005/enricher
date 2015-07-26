@@ -28,6 +28,7 @@ require.config({
         iboxTools:'js/plugins/ibox-tools/ibox-tools.directive',
         chatWindow:'js/plugins/chat-window/chat-window',
         fundFilters:'js/plugins/fund-filters/fund-filters.directive',
+        fundFilterGrid:'js/plugins/filter-grid/filter-grid.directive'
     },
     shim: {
         angularAMD: ['angular'],

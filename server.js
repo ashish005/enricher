@@ -37,18 +37,27 @@ mongoose.connect('mongodb://localhost:27017/enricherDB', function(error, db) {
     console.log('success: ' + db);
 });
 
+/*// Create the http server.
+http.createServer(function (request, response) {
+    // Attach listener on end event.
+    request.on('end', function () {
+        // Query the database.
+        connection.query('SELECT * FROM your_table;', function (error, rows, fields) {
+            response.writeHead(200, {
+                'Content-Type': 'x-application/json'
+            });
+            // Send data as JSON string.
+            // Rows variable holds the result of the query.
+            response.end(JSON.stringify(rows));
+        });
+    });
+// Listen on the 8080 port.
+}).listen(8080);*/
+
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
 require('./server/js/routers/server.routers')(server, router, mongoose);//Define All routes here
-
-
-// START THE SERVER
-/*http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write('hello, i know nodejitsu.')
-    res.end();
-}).listen(server.get('port'));*/
 
 server.listen(server.get('port'), function () {
     console.log('I am listening ' + server.get('port'));
