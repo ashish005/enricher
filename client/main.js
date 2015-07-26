@@ -10,9 +10,17 @@
         var app = angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'enricher.auth', 'enricher.core', 'ui.grid']);
 
         var _pluginOptions ={
-            'dynamicFilterGrid':{
+           home: {
+                templateUrl: 'client/js/default/home/templates/home.html',
+                    controllerUrl: 'js/default/home/controllers/home.controller'
+            },
+            dynamicFilterGrid:{
                 templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
                 controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
+            },
+            defaultFilterGrid:{
+                templateUrl: 'client/js/default/default-filter-grid/templates/default-filter-grid.html',
+                controllerUrl: 'js/default/default-filter-grid/controllers/default-filter-grid.controller'
             }
         }
 
@@ -20,11 +28,10 @@
         app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             //$locationProvider.html5Mode(true);
             $routeProvider
-                .when('/home', angularAMD.route({
-                    templateUrl: 'client/js/default/home/templates/home.html',
-                    controllerUrl: 'js/default/home/controllers/home.controller'
-                }))
-                .when('/nfos', angularAMD.route(_pluginOptions.dynamicFilterGrid))
+                .when('/home', angularAMD.route(_pluginOptions.home))
+                .when('/nfos', angularAMD.route(_pluginOptions.defaultFilterGrid))
+                .when('/dividends', angularAMD.route(_pluginOptions.defaultFilterGrid))
+                .when('/indices', angularAMD.route(_pluginOptions.defaultFilterGrid))
                 .when('/fundPerformers/:name', angularAMD.route(_pluginOptions.dynamicFilterGrid))
                 .otherwise({redirectTo: '/login'});//Handle all exceptions
         }]);

@@ -7,10 +7,18 @@
                 <div ibox-tools></div>
             </div>
             <div class="ibox-content">
-                <p>
-                    Ng Grid is a Angular native directive control that provides solutions for representing and manipulating tabular data on the web.
-                </p>
-                <div class="gridStyle" ui-grid="ngOptions"></div>
+                <div class="row" ng-if="showTabForView()">
+                    <div class="col-sm-12 m-b-xs">
+                        <div data-toggle="buttons" class="btn-group">
+                            <label class="btn btn-sm btn-white" ng-repeat="(key, info) in tabsData" data-key="{{key}}" data-ng-class="{'active' : 0 == $index}"><input id="option1" name="options" type="radio"> {{info.title}} </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 m-b-xs">
+                        <div class="gridStyle" ui-grid="ngOptions"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

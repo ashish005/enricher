@@ -1,9 +1,10 @@
  /**
  * Created by wizdev on 7/10/2015.
  */
- _routers = function (server, router, mongoose) {
+ module.exports = function (server, router, mongoose) {
      require('../controllers/auth.controller')(router, mongoose);
      require('../controllers/app-init.controller')(router, mongoose);
+     require('../controllers/default/default.controller')(router, mongoose);
 
      router.get('/apis', function(req, res) {
          res.render('apis', {data:router.stack});
@@ -12,5 +13,3 @@
      server.use('/api', router);
      module.exports = router;
  }
-
- module.exports = _routers;

@@ -3,31 +3,19 @@
  */
 (function(define, angular){
     define(['enricher', 'fundFilterGrid'], function (app) {//'fundFilters',
-        app.controller('dynFilterGridController', ['$scope', '$rootScope', '$http',
-            function ($scope, $rootScope, $http)
+        app.controller('dynFilterGridController', ['$scope', '$rootScope', '$http','$routeParams',
+            function ($scope, $rootScope, $http, $routeParams)
             {
-                $scope.ngOptions = {
-                    data: [
-                        {
-                            "firstName": "Cox",
-                            "lastName": "Carney",
-                            "company": "Enormo",
-                            "employed": true
-                        },
-                        {
-                            "firstName": "Lorraine",
-                            "lastName": "Wise",
-                            "company": "Comveyer",
-                            "employed": false
-                        },
-                        {
-                            "firstName": "Nancy",
-                            "lastName": "Waters",
-                            "company": "Fuelton",
-                            "employed": false
-                        }
-                    ]
-                };
+                var _routeParam =  $routeParams.name;
+                $scope.ngOptions={};
+
+                var _httpRequest = {method: 'GET', url: '/api/funds/'+ _routeParam};
+                $http(_httpRequest).
+                    success(function(data, status, headers, config) {
+                        $scope.ngOptions.data =  data;
+                    }).
+                    error(function(data, status, headers, config) {
+                    });
             }
         ]);
     });
