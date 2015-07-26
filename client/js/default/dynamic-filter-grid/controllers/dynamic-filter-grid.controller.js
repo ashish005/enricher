@@ -7,7 +7,9 @@
             function ($scope, $rootScope, $http, $routeParams)
             {
                 var _routeParam =  $routeParams.name;
-                var _httpRequest = {method: 'GET', url: '/api/funds/'+ _routeParam};
+                var _httpRequest = {method: 'GET', url: '/api/funds/'};
+                _httpRequest.url += (_routeParam)?_routeParam:'snapshot';
+
                 $scope.ngOptions = {};
                 $http(_httpRequest).
                     success(function(data, status, headers, config) {

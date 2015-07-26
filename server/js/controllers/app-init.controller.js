@@ -35,43 +35,43 @@ appInitController = function(router, mongoose) {
                     {
                         "id": 10,
                         "amc_name": "DSP BlackRock Mutual Fund",
-                        "amc_url": "www.dspblackrock.com",
+                        "amc_url": "#/schemeSummary",
                         "transcation_link": "  https://dspbronline.com/iol_purchaserequestwop.aspx?"
                     },
                     {
                         "id": 11,
                         "amc_name": "Escorts Mutual Fund",
-                        "amc_url": "www.escortsmutual.com",
+                        "amc_url": "#/schemeSummary",
                         "transcation_link": "NULL"
                     },
                     {
                         "id": 12,
                         "amc_name": "Fidelity Mutual Fund",
-                        "amc_url": "www.fidelity.co.in",
+                        "amc_url":  "/schemeSummary",
                         "transcation_link": "NULL"
                     },
                     {
                         "id": 13,
                         "amc_name": "Franklin Templeton Mutual Fund",
-                        "amc_url": "www.franklintempletonindia.com",
+                        "amc_url":  "/schemeSummary",
                         "transcation_link": "https://online.franklintempletonindia.com/asp_app/Investors/login/inv_login_main.asp"
                     },
                     {
                         "id": 14,
                         "amc_name": "HDFC Mutual Fund",
-                        "amc_url": "www.hdfcfund.com",
+                        "amc_url": "/schemeSummary",
                         "transcation_link": "https://investor.hdfcfund.com/mfonline/ExistingFolio.aspx"
                     },
                     {
                         "id": 15,
                         "amc_name": "HSBC Mutual Fund",
-                        "amc_url": "www.assetmanagement.hsbc.co.in",
+                        "amc_url":  "/schemeSummary",
                         "transcation_link": "NULL"
                     },
                     {
                         "id": 16,
                         "amc_name": "ICICI Prudential Mutual Fund",
-                        "amc_url": "www.icicipruamc.com",
+                        "amc_url":  "/schemeSummary",
                         "transcation_link": "https://www.icicipruamc.com/InvOnline/app/aspx/Default.aspx"
                     },
                     {"id": 17, "amc_name": "IL & FS Asset", "amc_url": "www.ilfsmf.com", "transcation_link": "NULL"},

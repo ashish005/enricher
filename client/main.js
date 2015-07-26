@@ -32,7 +32,8 @@
                 .when('/nfos', angularAMD.route(_pluginOptions.defaultFilterGrid))
                 .when('/dividends', angularAMD.route(_pluginOptions.defaultFilterGrid))
                 .when('/indices', angularAMD.route(_pluginOptions.defaultFilterGrid))
-                .when('/fundPerformers/:name', angularAMD.route(_pluginOptions.dynamicFilterGrid))
+                .when('/schemeSummary', angularAMD.route(_pluginOptions.dynamicFilterGrid))
+                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.dynamicFilterGrid))
                 .otherwise({redirectTo: '/login'});//Handle all exceptions
         }]);
 
