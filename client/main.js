@@ -131,14 +131,25 @@
                     return function(scope, element, attrs) {
                         var _basePath = 'client/js/core/templates/';
                         var _masterView = {
-                            auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['/login', '/register', '/forgot_password'], requiredModules:[] },
-                            admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['/admin', '/admin/user-info'], requiredModules:['navMenu'] },
-                            user:{id:3 , templateUrl:'user-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu', 'chatWindow', 'rightSideBar', 'fundsInfo']},
-                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['/home','/contacts'], requiredModules:['navMenu', 'fundsInfo', 'iboxTools']}
+                            auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['login', 'register', 'forgot_password'], requiredModules:[] },
+                            admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['admin', 'admin/user-info'], requiredModules:['navMenu'] },
+                            user:{id:3 , templateUrl:'user-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'chatWindow', 'rightSideBar', 'fundsInfo']},
+                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'fundsInfo', 'iboxTools']}
                         };
-                        var _activeMasterView = _masterView.default;
+                        var _activeMasterView = _masterView.auth;
+
+                        var hash = window.location.hash.split('/')[1];
+                        if(hash) {
+                            var _isAuthIndex = _masterView.auth.viewKeys.indexOf(hash);
+
+                            if (_isAuthIndex == -1) {
+                                _activeMasterView = _masterView.default;
+                            }
+                        }
+
                         _activeMasterView.templateUrl =_basePath + _activeMasterView.templateUrl;
                         require(_activeMasterView.requiredModules, function(){
+                            console.log(_activeMasterView.templateUrl);
                             $http.get(_activeMasterView.templateUrl).then(function(result){
                                     element.html(result.data);
                                     $compile(element.contents())($rootScope);
