@@ -13,6 +13,7 @@ require.config({
         'ui-bootstrap':'assets/libs/bootstrap/ui-bootstrap-tpls-0.12.0.min',
         //Third Party Plugins
         uiGrid:'assets/libs/plugins/ui-grid/ui-grid.min',
+        metisMenu:'assets/libs/plugins/metisMenu/jquery.metisMenu',
         slimscroll:'assets/libs/plugins/slimscroll/jquery.slimscroll.min',
         'enricher-core':'js/core/core.directives',
 

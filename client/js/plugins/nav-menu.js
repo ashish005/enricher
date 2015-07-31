@@ -4,174 +4,25 @@
 
 (function(define, angular){
     "use strict";
-    define(['enricher'], function (app) {
-        app.directive('leftNav', ['$http', function ($http) {
+    define(['enricher', 'metisMenu'], function (app) {
+        app.directive('sideNavigation',['$timeout', function sideNavigation($timeout) {
+            return {
+                restrict: 'A',
+                link: function(scope, element) {
+                    // Call the metsiMenu plugin and plug it to sidebar navigation
+                    $timeout(function(){
+                        element.metisMenu();
+
+                    });
+                }
+            };
+        }]);
+        app.directive('leftNav',['$http', function sideNavigation($http) {
             return {
                 restrict: 'AE',
                 templateUrl: 'client/js/plugins/left-menu.html',
                 scope:{
                     menuData:'='
-                },
-                link: function ($scope, element, attr, ctrl, transclude) {
-                    function transitionEnd() {
-                        var el = document.createElement('mm');
-
-                        var transEndEventNames = {
-                            WebkitTransition: 'webkitTransitionEnd',
-                            MozTransition: 'transitionend',
-                            OTransition: 'oTransitionEnd otransitionend',
-                            transition: 'transitionend'
-                        };
-
-                        for (var name in transEndEventNames) {
-                            if (el.style[name] !== undefined) {
-                                return {
-                                    end: transEndEventNames[name]
-                                };
-                            }
-                        }
-                        return false;
-                    }
-
-                    $.fn.emulateTransitionEnd = function (duration) {
-                        var called = false;
-                        var $el = this;
-                        $(this).one('mmTransitionEnd', function () {
-                            called = true;
-                        });
-                        var callback = function () {
-                            if (!called) {
-                                $($el).trigger($transition.end);
-                            }
-                        };
-                        setTimeout(callback, duration);
-                        return this;
-                    };
-
-                    var $transition = transitionEnd();
-                    if (!!$transition) {
-                        $.event.special.mmTransitionEnd = {
-                            bindType: $transition.end,
-                            delegateType: $transition.end,
-                            handle: function (e) {
-                                if ($(e.target).is(this)) {
-                                    return e.
-                                        handleObj.
-                                        handler.
-                                        apply(this, arguments);
-                                }
-                            }
-                        };
-                    }
-
-
-                    var _DEFAULTS = {
-                        toggle: true,
-                        doubleTapToGo: false,
-                        activeClass: 'active',
-                        collapseClass: 'collapse',
-                        collapseInClass: 'in',
-                        collapsingClass: 'collapsing'
-                    };
-
-                    var activeClass = _DEFAULTS.activeClass;
-                    var collapseClass = _DEFAULTS.collapseClass;
-                    var collapseInClass = _DEFAULTS.collapseInClass
-                    var collapsingClass = _DEFAULTS.collapsingClass;
-
-                    var _menu = {
-                        transitioning: 0,
-                        TRANSITION_DURATION: 350
-                    };
-                    _menu.options = _DEFAULTS;
-
-                    var show = function (el) {
-                        var $this = $(el);
-                        var $parent = $this.parent('li');
-                        if ($this.hasClass(collapseInClass)) {
-                            return;
-                        }
-
-                        $parent.addClass(activeClass);
-
-                        if (_menu.transitioning || _menu.options.toggle) {
-                            hide($parent.siblings().children('ul.' + collapseInClass));
-                        }
-
-                        $this
-                            .removeClass(collapseClass)
-                            .addClass(collapsingClass)
-                            .height(0);
-
-                        _menu.transitioning = 1;
-                        var complete = function () {
-                            $this
-                                .removeClass(collapsingClass)
-                                .addClass(collapseClass + ' ' + collapseInClass)
-                                .height('');
-                            _menu.transitioning = 0;
-                        };
-                        if (!$transition) {
-                            return complete.call(this);
-                        }
-                        $this
-                            .one('mmTransitionEnd', $.proxy(complete, this))
-                            .emulateTransitionEnd(_menu.TRANSITION_DURATION)
-                            .height($this[0].scrollHeight);
-                    };
-
-                    var hide = function (el) {
-                        var activeClass = _menu.options.activeClass;
-                        var collapseClass = _menu.options.collapseClass;
-                        var collapseInClass = _menu.options.collapseInClass;
-                        var collapsingClass = _menu.options.collapsingClass;
-                        var $this = $(el);
-
-                        if (_menu.transitioning || !$this.hasClass(collapseInClass)) {
-                            return;
-                        }
-
-                        $this.parent('li').removeClass(activeClass);
-                        $this.height($this.height())[0].offsetHeight;
-
-                        $this
-                            .addClass(collapsingClass)
-                            .removeClass(collapseClass)
-                            .removeClass(collapseInClass);
-
-                        _menu.transitioning = 1;
-
-                        var complete = function () {
-                            _menu.transitioning = 0;
-                            $this
-                                .removeClass(collapsingClass)
-                                .addClass(collapseClass);
-                        };
-
-                        if (!$transition) {
-                            return complete.call(this);
-                        }
-                        $this
-                            .height(0)
-                            .one('mmTransitionEnd', $.proxy(complete, this))
-                            .emulateTransitionEnd(_menu.TRANSITION_DURATION);
-                    };
-
-                    element
-                        .find('#side-menu1')
-                        .on('click', 'li a', function (e) {
-                            var self = $(this);
-                            var $parent = self.parent('li');
-                            var $list = $parent.children('ul');
-                            e.preventDefault();
-
-                            if ($parent.hasClass(activeClass)) {
-                                hide($list);
-                            } else {
-                                show($list);
-                            }
-                        });
-                    //element.find('#side-menu').metisMenu();
                 },
                 controller: function ($scope) {
                     $scope.userProfile = {
@@ -182,7 +33,7 @@
                     };
                     $scope.navMenu = $scope.menuData;
                 }
-            }
+            };
         }]);
         app.directive('topSearch', function () {
             return {

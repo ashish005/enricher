@@ -1,5 +1,5 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
-    <div class="sidebar-collapse">
+    <div class="sidebar-collapse" full-scroll>
         <ul class="nav metismenu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
@@ -26,8 +26,7 @@
                 </div>
             </li>
         </ul>
-        <!--<button type="submit" ng-click="submitMenu()">Submit</button>-->
-        <ul class="nav metismenu" id="side-menu1">
+        <ul side-navigation class="nav metismenu" id="side-menu1">
             <li ng-repeat="menu in navMenu">
                 <a ng-href="{{menu.routeTo}}"><i class="fa {{menu.iconClass}}"></i> <span class="nav-label">{{menu.text}}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-if="menu.childItems">

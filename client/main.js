@@ -24,7 +24,6 @@
             }
         }
 
-
         app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             //$locationProvider.html5Mode(true);
             $routeProvider
@@ -74,8 +73,8 @@
                         },
                         {
                             childItems: [
-                                {key: "tg", text: "Top Gainers", routeTo:'#/fundPerformers/gainer'},
-                                {key: "tl", text: "Top Loosers", routeTo:'#/fundPerformers/looser',}
+                                {key: "tg", text: "Top Gainers", routeTo:'#/schemeSummary/gainer'},
+                                {key: "tl", text: "Top Loosers", routeTo:'#/schemeSummary/looser',}
                             ],
                             iconClass: "fa-th-large",
                             key: "fp",
@@ -94,6 +93,7 @@
                             childItems: null,
                             iconClass: "fa-bar-chart-o",
                             key: "dvdnts",
+                            routeTo:'#/dividends',
                             template: "<span class='label label-warning pull-right'>16/24</span>",
                             text: "Dividends"
                         },
@@ -101,6 +101,7 @@
                             childItems: null,
                             iconClass: "fa-bar-chart-o",
                             key: "indecs",
+                            routeTo:'#/indices',
                             template: "<span class='label label-warning pull-right'>16/24</span>",
                             text: "Indices"
                         },
@@ -204,40 +205,6 @@
         angular.element(document).ready(function () {
             $('<div ng-controller="appViewController" ng-init="initEnricher()"><div id="wrapper" page-view></div></div>').appendTo('body');
             return angular.bootstrap($('body'), [_appName]);
-            /*var _req = {method: 'GET', url: 'api/init'};
-            var initInjector = angular.injector(["ng"]);
-            var $http = initInjector.get("$http");
-            $http(_req).then(function (resp)
-            {
-                var _appInfo = resp.data[0];
-                app.constant('menu', _appInfo.menu);
-                _appInfo.fundInfo = [
-                    {key:'', value:'INRAxis', description:''},
-                    {key:'', value:'INRBaroda Pioneer', description:''},
-                    {key:'', value:'INRBirla Sun Life', description:''},
-                    {key:'', value:'INRBNP Paribas', description:''},
-                    {key:'', value:'INRBOI AXA', description:''},
-                    {key:'', value:'INRCanara Robeco', description:''},
-                    {key:'', value:'INRDeutsche', description:''},
-                    {key:'', value:'INRDSP BlackRock', description:''},
-                    {key:'', value:'INREdelweiss', description:''},
-                    {key:'', value:'INREscorts', description:''},
-                    {key:'', value:'INRFranklin Templeton', description:''},
-                    {key:'', value:'INRGoldman Sachs', description:''},
-                    {key:'', value:'INRHDFC', description:''},
-                    {key:'', value:'INRHSBC', description:''},
-                    {key:'', value:'INRICICI Prudential', description:''},
-                    {key:'', value:'INRIDBI', description:''}
-                ];
-                app.constant('fundInfoConstant', _appInfo.fundInfo);
-
-                // Load an element that uses controller Ctrl
-                $('<div ng-controller="appViewController" ng-init="initEnricher()">{{name}}<div id="wrapper" page-view></div></div>').appendTo('body');
-                // Bootstrap with Foo
-                return angular.bootstrap($('body'), [_appName]);
-            }, function (error) {
-                throw new Error('Config file has error : ' + error);
-            });*/
         });
         return app;
     });
