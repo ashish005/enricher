@@ -82,7 +82,7 @@ require.config({
             deps:['jQuery', 'angular']
         },
         enricher:{
-            deps:['jQuery', 'bootstrap','ui-bootstrap', 'uiGrid', 'enricher-core', 'auth']
+            deps:['jQuery', 'bootstrap','ui-bootstrap', 'slimscroll', 'uiGrid', 'enricher-core', 'auth']
         }
     },
     deps: ['enricher']
