@@ -1,0 +1,33 @@
+<div id="watchlist-overlay"></div>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-sm-9 m-b-xs">
+               <span id="addWatchlist" ng-click="showWatchlistOptions()"> Add Watchlist </span>
+            </div>
+            <div class="col-sm-3">
+                dropdown
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hover no-margins">
+                <thead>
+                <tr>
+                    <th>Fund</th>
+                    <th>NAV</th>
+                    <th>Chg(%)</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="wlist in watchlist">
+                    <td>{{wlist.fund}}</td>
+                    <td>{{wlist.nav}}</td>
+                    <td>{{wlist.change}}</td>
+                    <td>{{wlist.date}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>My Watchlist Settings</h5>
+        <div ibox-tools></div>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-lg-4" ng-repeat="watchFltr in watchlistFilters">
+                <div class="form-group">
+                    <label class="font-noraml">Select {{watchFltr.name}}</label>
+                    <div class="input-group">
+                        <select multiple chosen id="{{watchFltr.name}}" class="chosen-select" tabindex="4" ng-model="watchFltr.activeOption" ng-options="obj.value for obj in watchFltr.data track by obj.value">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 full-height">
+                <div class="watchlist-box"></div>
+            </div>
+            <div class="col-lg-6 full-height">
+                <div class="watchlist-box"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <span>Apply</span>
+                <span>Cancel</span>
+            </div>
+        </div>
+    </div>
+</div>

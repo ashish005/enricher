@@ -135,7 +135,7 @@
                             auth:{ id:1, templateUrl:'auth-templates.html', viewKeys:['login', 'register', 'forgot_password'], requiredModules:[] },
                             admin:{id:2, templateUrl:'admin-templates.html', viewKeys:['admin', 'admin/user-info'], requiredModules:['navMenu'] },
                             user:{id:3 , templateUrl:'user-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'chatWindow', 'rightSideBar', 'fundsInfo']},
-                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'fundsInfo', 'iboxTools']}
+                            default:{id:3 , templateUrl:'default-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'fundsInfo', 'iboxTools', 'watchlist']}
                         };
                         var _activeMasterView = _masterView.default;
 

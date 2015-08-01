@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <base href="/">
-     <link href="client/assets/css/bootstrap.min.css" rel="stylesheet">
-     <link href="client/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-     <link href="client/assets/css/animate.css" rel="stylesheet">
-     <link href="client/assets/libs/plugins/ui-grid/ui-grid.min.css" rel="stylesheet">
-     <link href="client/assets/css/style.css" rel="stylesheet">
+    <link href="client/assets/css/main.css" rel="stylesheet">
     <style>
         .horizontal-ol {
             margin-bottom: 0px;
@@ -38,6 +33,24 @@
         }
         .ui-grid-canvas>.ui-grid-cell-contents {
             color: #2f4050;
+        }
+        .watchlist-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #watchlist-overlay{
+            height: 30px;
+        }
+        .watchlist-overlay {
+            z-index: 10;
+        }
+        .watchlist-box{
+            width:100%;
+            height: 240px;
+            border: 1px solid #2f4050;
         }
     </style>
 </head>
