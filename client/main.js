@@ -31,9 +31,9 @@
                 .when('/nfos', angularAMD.route(_pluginOptions.defaultFilterGrid))
                 .when('/dividends', angularAMD.route(_pluginOptions.defaultFilterGrid))
                 .when('/indices', angularAMD.route(_pluginOptions.defaultFilterGrid))
-                .when('/schemeSummary', angularAMD.route(_pluginOptions.dynamicFilterGrid))
-                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.dynamicFilterGrid))
-                .otherwise({redirectTo: '/login'});//Handle all exceptions
+                .when('/schemeSummary', angularAMD.route(_pluginOptions.defaultFilterGrid))
+                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.defaultFilterGrid))
+                .otherwise({redirectTo: '/home'});//Handle all exceptions
         }]);
 
         app.run(['$rootScope', function ($rootScope) {
@@ -137,7 +137,7 @@
                             user:{id:3 , templateUrl:'user-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'chatWindow', 'rightSideBar', 'fundsInfo']},
                             default:{id:3 , templateUrl:'default-templates.html', viewKeys:['home','contacts'], requiredModules:['navMenu', 'fundsInfo', 'iboxTools']}
                         };
-                        var _activeMasterView = _masterView.auth;
+                        var _activeMasterView = _masterView.default;
 
                         var hash = window.location.hash.split('/')[1];
                         if(hash) {

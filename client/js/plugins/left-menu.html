@@ -1,6 +1,6 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse" full-scroll>
-        <ul class="nav metismenu">
+        <!--<ul class="nav metismenu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <span ng-if="userProfile.info.pic">
@@ -25,8 +25,32 @@
                     IN+
                 </div>
             </li>
-        </ul>
-        <ul side-navigation class="nav metismenu" id="side-menu1">
+        </ul>-->
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span ng-if="userProfile.info.pic">
+                       <img alt="image" width="60px" class="img-circle" ng-src="{{userProfile.info.pic}}" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle">
+                        <span class="clear"> <span class="block m-t-xs">
+                            <strong class="font-bold">{{userProfile.info.name}}</strong>
+                         </span>
+                            <span class="text-muted text-xs block">{{userProfile.info.designation}} <b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="mailbox.html">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#/login">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
             <li ng-repeat="menu in navMenu">
                 <a ng-href="{{menu.routeTo}}"><i class="fa {{menu.iconClass}}"></i> <span class="nav-label">{{menu.text}}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-if="menu.childItems">

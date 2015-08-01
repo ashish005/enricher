@@ -13,7 +13,8 @@
                 var _routeSettings = {
                     nfos:{name:'NFOs', api:'nfos', extraParams:''},
                     dividends:{name:'Dividends', api:'dividends', extraParams:''},
-                    indices:{name:'Indices', api:'indices', extraParams:''}
+                    indices:{name:'Indices', api:'indices', extraParams:''},
+                    schemeSummary:{name:'Indices', api:_routeParam, extraParams:''}
                 };
 
                 var _activeRoutes = _routeSettings[_path];
