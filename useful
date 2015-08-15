@@ -1,0 +1,6 @@
+//In Another tab run command :-
+1. mongod --config "C:\Ashish\implementation\enricher\database\mongod.config" --install
+2. net start MongoDB
+
+//In Another tab run command :-
+1. mongo

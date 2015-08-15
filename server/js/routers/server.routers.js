@@ -6,6 +6,8 @@
      require('../controllers/app-init.controller')(router, mongoose);
      require('../controllers/default/default.controller')(router, mongoose);
 
+     require('../db/controllers/db.controller')(router, mongoose);
+
      router.get('/apis', function(req, res) {
          res.render('apis', {data:router.stack});
      });

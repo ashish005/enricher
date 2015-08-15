@@ -10,29 +10,40 @@
         var app = angular.module(_appName, ['ui.bootstrap', 'ngRoute', 'enricher.auth', 'enricher.core', 'ui.grid']);
 
         var _pluginOptions ={
-           home: {
-                templateUrl: 'client/js/default/home/templates/home.html',
+            default: {
+                home: {
+                    templateUrl: 'client/js/default/home/templates/home.html',
                     controllerUrl: 'js/default/home/controllers/home.controller'
+                },
+                dynamicFilterGrid: {
+                    templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
+                    controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
+                },
+                defaultFilterGrid: {
+                    templateUrl: 'client/js/default/default-filter-grid/templates/default-filter-grid.html',
+                    controllerUrl: 'js/default/default-filter-grid/controllers/default-filter-grid.controller'
+                }
             },
-            dynamicFilterGrid:{
-                templateUrl: 'client/js/default/dynamic-filter-grid/templates/dynamic-filter-grid.html',
-                controllerUrl: 'js/default/dynamic-filter-grid/controllers/dynamic-filter-grid.controller'
-            },
-            defaultFilterGrid:{
-                templateUrl: 'client/js/default/default-filter-grid/templates/default-filter-grid.html',
-                controllerUrl: 'js/default/default-filter-grid/controllers/default-filter-grid.controller'
+            admin:{
+                home: {
+                    templateUrl: 'client/js/admin/dashboard/templates/dashboard.html',
+                    controllerUrl: 'js/admin/dashboard/controllers/dashboard.controller'
+                },
             }
         }
 
         app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             //$locationProvider.html5Mode(true);
             $routeProvider
-                .when('/home', angularAMD.route(_pluginOptions.home))
-                .when('/nfos', angularAMD.route(_pluginOptions.defaultFilterGrid))
-                .when('/dividends', angularAMD.route(_pluginOptions.defaultFilterGrid))
-                .when('/indices', angularAMD.route(_pluginOptions.defaultFilterGrid))
-                .when('/schemeSummary', angularAMD.route(_pluginOptions.defaultFilterGrid))
-                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.defaultFilterGrid))
+                .when('/home', angularAMD.route(_pluginOptions.default.home))
+                .when('/nfos', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
+                .when('/dividends', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
+                .when('/indices', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
+                .when('/schemeSummary', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
+                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
+
+
+                .when('/admin/home', angularAMD.route(_pluginOptions.admin.home))
                 .otherwise({redirectTo: '/home'});//Handle all exceptions
         }]);
 

@@ -26,7 +26,10 @@
 
                 $http(_httpRequest).
                     success(function(data, status, headers, config) {
-                        $scope.ngOptions.updateGrid(data);
+                        $scope.ngOptions.data = data;
+                        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+                            $scope.$apply();
+                        }
                     }).
                     error(function(data, status, headers, config) {
                     });

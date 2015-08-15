@@ -1,0 +1,250 @@
+2015-08-14T23:58:38.563+0530 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2015-08-14T23:58:38.595+0530 I CONTROL  Trying to start Windows service 'MongoDB'
+2015-08-14T23:58:38.595+0530 I STORAGE  Service running
+2015-08-14T23:58:38.595+0530 W -        [initandlisten] Detected unclean shutdown - C:\Ashish\implementation\enricher\database\data\mongod.lock is not empty.
+2015-08-14T23:58:38.610+0530 I JOURNAL  [initandlisten] journal dir=C:\Ashish\implementation\enricher\database\data\journal
+2015-08-14T23:58:38.626+0530 D COMMAND  [DataFileSync] BackgroundJob starting: DataFileSync
+2015-08-14T23:58:38.627+0530 I JOURNAL  [initandlisten] recover begin
+2015-08-14T23:58:38.630+0530 I JOURNAL  [initandlisten] recover lsn: 945792
+2015-08-14T23:58:38.630+0530 I JOURNAL  [initandlisten] recover C:\Ashish\implementation\enricher\database\data\journal\j._0
+2015-08-14T23:58:38.631+0530 I JOURNAL  [initandlisten] recover skipping application of section seq:0 < lsn:945792
+2015-08-14T23:58:38.631+0530 I JOURNAL  [initandlisten] recover skipping application of section seq:767152 < lsn:945792
+2015-08-14T23:58:38.640+0530 I JOURNAL  [initandlisten] recover cleaning up
+2015-08-14T23:58:38.640+0530 I JOURNAL  [initandlisten] removeJournalFiles
+2015-08-14T23:58:38.641+0530 D JOURNAL  [initandlisten] removeJournalFiles end
+2015-08-14T23:58:38.641+0530 I JOURNAL  [initandlisten] recover done
+2015-08-14T23:58:38.661+0530 I JOURNAL  [durability] Durability thread started
+2015-08-14T23:58:38.662+0530 I JOURNAL  [journal writer] Journal writer thread started
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] MongoDB starting : pid=3492 port=27017 dbpath=C:\Ashish\implementation\enricher\database\data 64-bit host=WizDev021
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] db version v3.0.3
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] allocator: system
+2015-08-14T23:58:38.665+0530 I CONTROL  [initandlisten] options: { config: "C:\Ashish\implementation\enricher\database\mongod.config", net: { bindIp: "127.0.0.1" }, service: true, storage: { dbPath: "C:\Ashish\implementation\enricher\database\data" }, systemLog: { destination: "file", path: "C:\Ashish\implementation\enricher\database\log\mongod.log", verbosity: 1 } }
+2015-08-14T23:58:38.667+0530 D STORAGE  [initandlisten] enter repairDatabases (to check pdfile version #)
+2015-08-14T23:58:38.668+0530 D STORAGE  [initandlisten]     Recovering database: EnricherDB
+2015-08-14T23:58:38.827+0530 D STORAGE  [initandlisten] EnricherDB.apps: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.827+0530 D STORAGE  [initandlisten] EnricherDB.system.namespaces: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.827+0530 D STORAGE  [initandlisten] EnricherDB.test: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.828+0530 D STORAGE  [initandlisten] EnricherDB.system.indexes: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.829+0530 D STORAGE  [initandlisten]     Recovering database: local
+2015-08-14T23:58:38.937+0530 D STORAGE  [initandlisten] local.startup_log: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.937+0530 D STORAGE  [initandlisten] local.system.indexes: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.938+0530 D STORAGE  [initandlisten] local.system.namespaces: clearing plan cache - collection info cache reset
+2015-08-14T23:58:38.938+0530 D STORAGE  [initandlisten] done repairDatabases
+2015-08-14T23:58:38.940+0530 I QUERY    [initandlisten] query admin.system.roles planSummary: EOF ntoreturn:0 ntoskip:0 nscanned:0 nscannedObjects:0 keyUpdates:0 writeConflicts:0 numYields:0 nreturned:0 reslen:20 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 0ms
+2015-08-14T23:58:38.942+0530 D INDEX    [initandlisten] checking complete
+2015-08-14T23:58:38.942+0530 D COMMAND  [TTLMonitor] BackgroundJob starting: TTLMonitor
+2015-08-14T23:58:38.942+0530 D COMMAND  [ClientCursorMonitor] BackgroundJob starting: ClientCursorMonitor
+2015-08-14T23:58:38.943+0530 D COMMAND  [PeriodicTaskRunner] BackgroundJob starting: PeriodicTaskRunner
+2015-08-14T23:58:38.944+0530 I NETWORK  [initandlisten] waiting for connections on port 27017
+2015-08-14T23:58:38.947+0530 D JOURNAL  [journal writer] lsn set 0
+2015-08-14T23:59:38.636+0530 I STORAGE  [DataFileSync] flushing mmaps took 10ms  for 4 files
+2015-08-15T00:00:38.630+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:01:38.629+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:02:43.605+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:03:43.607+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:04:43.606+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:05:43.609+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:06:43.606+0530 I STORAGE  [DataFileSync] flushing mmaps took 1ms  for 4 files
+2015-08-15T00:07:43.614+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T00:08:43.609+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:09:43.608+0530 I STORAGE  [DataFileSync] flushing mmaps took 1ms  for 4 files
+2015-08-15T00:10:43.610+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:11:43.609+0530 I STORAGE  [DataFileSync] flushing mmaps took 1ms  for 4 files
+2015-08-15T00:12:43.610+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:13:43.610+0530 I STORAGE  [DataFileSync] flushing mmaps took 1ms  for 4 files
+2015-08-15T00:14:43.610+0530 I STORAGE  [DataFileSync] flushing mmaps took 1ms  for 4 files
+2015-08-15T00:15:43.612+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:16:43.616+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:17:43.616+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:18:43.618+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T00:19:43.617+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:20:43.615+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:21:43.614+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T00:22:43.619+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:23:43.616+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:24:43.619+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:25:43.620+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:26:43.621+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:27:43.622+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:28:43.622+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:29:43.623+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:30:43.622+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:31:43.623+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:32:43.622+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:33:43.625+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:34:43.624+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:35:43.625+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:36:43.627+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:37:43.626+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:38:43.631+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T00:39:43.633+0530 I STORAGE  [DataFileSync] flushing mmaps took 9ms  for 4 files
+2015-08-15T00:40:43.634+0530 I STORAGE  [DataFileSync] flushing mmaps took 9ms  for 4 files
+2015-08-15T00:41:43.631+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:42:43.630+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:43:43.631+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:44:43.633+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:45:43.635+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:46:43.634+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:47:43.640+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T00:48:43.639+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:49:43.641+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T00:50:43.639+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:51:43.638+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:52:43.641+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:53:43.640+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T00:54:43.640+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T00:55:43.644+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T00:56:43.649+0530 I STORAGE  [DataFileSync] flushing mmaps took 10ms  for 4 files
+2015-08-15T00:57:43.646+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:58:43.646+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T00:59:43.645+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T01:00:43.646+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T01:01:43.645+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T01:02:43.654+0530 I STORAGE  [DataFileSync] flushing mmaps took 12ms  for 4 files
+2015-08-15T01:03:43.647+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T01:04:43.647+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T01:05:43.653+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T01:06:43.652+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T01:07:43.652+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T01:08:43.652+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T01:09:43.652+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T01:10:43.652+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T01:11:43.652+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T01:12:43.651+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T01:13:43.669+0530 I STORAGE  [DataFileSync] flushing mmaps took 20ms  for 4 files
+2015-08-15T01:14:43.655+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T01:15:43.654+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T01:16:43.663+0530 I STORAGE  [DataFileSync] flushing mmaps took 13ms  for 4 files
+2015-08-15T01:17:43.655+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T03:00:15.140+0530 I STORAGE  [DataFileSync] flushing mmaps took 1624ms  for 4 files
+2015-08-15T03:01:13.520+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:19:53.462+0530 I STORAGE  [DataFileSync] flushing mmaps took 1923ms  for 4 files
+2015-08-15T10:20:51.541+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T10:21:51.544+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:22:51.545+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:23:51.548+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T10:24:51.547+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:25:51.547+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:26:51.554+0530 I STORAGE  [DataFileSync] flushing mmaps took 11ms  for 4 files
+2015-08-15T10:27:51.549+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:28:51.545+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T10:29:51.552+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T10:30:51.550+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:31:51.550+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:32:51.551+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:33:51.553+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:34:51.551+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:35:51.559+0530 I STORAGE  [DataFileSync] flushing mmaps took 12ms  for 4 files
+2015-08-15T10:36:51.553+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:37:51.557+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T10:38:51.556+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:39:51.556+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:40:51.557+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:41:51.556+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:42:51.556+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:43:51.558+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:44:51.557+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:45:51.561+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:46:51.560+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T10:47:51.564+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T10:48:51.565+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:49:51.563+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:50:51.569+0530 I STORAGE  [DataFileSync] flushing mmaps took 9ms  for 4 files
+2015-08-15T10:51:51.567+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T10:52:51.567+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T10:53:51.564+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T10:54:51.567+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:55:51.570+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T10:56:51.567+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:57:51.568+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T10:58:51.577+0530 I STORAGE  [DataFileSync] flushing mmaps took 13ms  for 4 files
+2015-08-15T10:59:51.580+0530 I STORAGE  [DataFileSync] flushing mmaps took 15ms  for 4 files
+2015-08-15T11:00:51.568+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T11:01:51.570+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T11:02:51.570+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T21:40:23.484+0530 I STORAGE  [DataFileSync] flushing mmaps took 974ms  for 4 files
+2015-08-15T21:41:22.514+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T21:42:22.516+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T21:43:22.515+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T21:44:22.522+0530 I STORAGE  [DataFileSync] flushing mmaps took 10ms  for 4 files
+2015-08-15T21:45:22.518+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T21:46:22.518+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T21:47:22.519+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T21:48:22.522+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T21:49:22.519+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T21:50:22.519+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T21:51:22.518+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T21:52:22.520+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T21:53:22.524+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T21:54:22.520+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T21:55:22.520+0530 I STORAGE  [DataFileSync] flushing mmaps took 2ms  for 4 files
+2015-08-15T21:56:22.525+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T21:57:22.526+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T21:58:22.526+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T21:59:22.526+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T22:00:22.527+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T22:01:22.525+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T22:02:22.526+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files
+2015-08-15T22:03:22.527+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T22:04:22.529+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T22:05:22.526+0530 I STORAGE  [DataFileSync] flushing mmaps took 3ms  for 4 files
+2015-08-15T22:06:22.530+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T22:07:22.531+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T22:08:22.531+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T22:09:22.532+0530 I STORAGE  [DataFileSync] flushing mmaps took 6ms  for 4 files
+2015-08-15T22:10:22.534+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T22:11:22.532+0530 I STORAGE  [DataFileSync] flushing mmaps took 5ms  for 4 files
+2015-08-15T22:12:22.535+0530 I STORAGE  [DataFileSync] flushing mmaps took 8ms  for 4 files
+2015-08-15T22:13:22.544+0530 I STORAGE  [DataFileSync] flushing mmaps took 11ms  for 4 files
+2015-08-15T22:13:44.839+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65447 #1 (1 connection now open)
+2015-08-15T22:13:44.846+0530 I COMMAND  [conn1] command system.$cmd command: isMaster { ismaster: true } keyUpdates:0 writeConflicts:0 numYields:0 reslen:178 locks:{} 0ms
+2015-08-15T22:13:44.853+0530 I NETWORK  [conn1] end connection 127.0.0.1:65447 (0 connections now open)
+2015-08-15T22:13:44.854+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65448 #2 (1 connection now open)
+2015-08-15T22:13:44.855+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65449 #3 (2 connections now open)
+2015-08-15T22:13:44.855+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65450 #4 (3 connections now open)
+2015-08-15T22:13:44.856+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65451 #5 (4 connections now open)
+2015-08-15T22:13:44.857+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65452 #6 (5 connections now open)
+2015-08-15T22:13:44.858+0530 I COMMAND  [conn2] command system.$cmd command: isMaster { ismaster: true } keyUpdates:0 writeConflicts:0 numYields:0 reslen:178 locks:{} 0ms
+2015-08-15T22:13:44.864+0530 I COMMAND  [conn3] command enricherDB.$cmd command: listIndexes { listIndexes: "apps", cursor: {} } keyUpdates:0 writeConflicts:0 numYields:0 reslen:71 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 0ms
+2015-08-15T22:13:44.865+0530 I COMMAND  [conn4] command enricherDB.$cmd command: listIndexes { listIndexes: "childitems", cursor: {} } keyUpdates:0 writeConflicts:0 numYields:0 reslen:71 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 0ms
+2015-08-15T22:13:44.865+0530 I COMMAND  [conn5] command enricherDB.$cmd command: listIndexes { listIndexes: "inits", cursor: {} } keyUpdates:0 writeConflicts:0 numYields:0 reslen:71 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 0ms
+2015-08-15T22:13:44.870+0530 D -        [conn6] User Assertion: 13297:db already exists with different case already have: [EnricherDB] trying to create [enricherDB]
+2015-08-15T22:13:44.874+0530 D -        [conn2] User Assertion: 13297:db already exists with different case already have: [EnricherDB] trying to create [enricherDB]
+2015-08-15T22:13:44.874+0530 I COMMAND  [conn6] command enricherDB.$cmd command: createIndexes { createIndexes: "apps", indexes: [ { name: "host_1", key: { host: 1 }, unique: true, background: true, safe: null } ], writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:165 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 1 } }, Database: { acquireCount: { W: 1 } } } 5ms
+2015-08-15T22:13:44.874+0530 D -        [conn3] User Assertion: 13297:db already exists with different case already have: [EnricherDB] trying to create [enricherDB]
+2015-08-15T22:13:44.874+0530 I COMMAND  [conn2] command enricherDB.$cmd command: createIndexes { createIndexes: "childitems", indexes: [ { name: "key_1", key: { key: 1 }, unique: true, background: true, safe: null } ], writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:165 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 2 } }, Database: { acquireCount: { W: 1 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 3321 } } } 4ms
+2015-08-15T22:13:44.874+0530 I COMMAND  [conn3] command enricherDB.$cmd command: createIndexes { createIndexes: "inits", indexes: [ { name: "menu.key_1", key: { menu.key: 1 }, unique: true, background: true, safe: null } ], writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:165 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 2 } }, Database: { acquireCount: { W: 1 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 3637 } } } 4ms
+2015-08-15T22:13:44.878+0530 D -        [conn4] User Assertion: 13297:db already exists with different case already have: [EnricherDB] trying to create [enricherDB]
+2015-08-15T22:13:44.878+0530 D -        [conn5] User Assertion: 13297:db already exists with different case already have: [EnricherDB] trying to create [enricherDB]
+2015-08-15T22:13:44.879+0530 I WRITE    [conn4] insert enricherDB.system.indexes query: { ns: "enricherDB.apps", key: { host: 1 }, name: "host_1", unique: true, background: true, safe: null } ninserted:0 keyUpdates:0 writeConflicts:0 exception: db already exists with different case already have: [EnricherDB] trying to create [enricherDB] code:13297 numYields:0 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 1 } }, Database: { acquireCount: { W: 1 } } } 1ms
+2015-08-15T22:13:44.879+0530 I WRITE    [conn5] insert enricherDB.system.indexes query: { ns: "enricherDB.childitems", key: { key: 1 }, name: "key_1", unique: true, background: true, safe: null } ninserted:0 keyUpdates:0 writeConflicts:0 exception: db already exists with different case already have: [EnricherDB] trying to create [enricherDB] code:13297 numYields:0 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 2 } }, Database: { acquireCount: { W: 1 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 496 } } } 1ms
+2015-08-15T22:13:44.879+0530 I COMMAND  [conn4] command enricherDB.$cmd command: insert { insert: "system.indexes", documents: [ { ns: "enricherDB.apps", key: { host: 1 }, name: "host_1", unique: true, background: true, safe: null } ], ordered: true, writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:194 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 1 } }, Database: { acquireCount: { W: 1 } } } 3ms
+2015-08-15T22:13:44.879+0530 I COMMAND  [conn5] command enricherDB.$cmd command: insert { insert: "system.indexes", documents: [ { ns: "enricherDB.childitems", key: { key: 1 }, name: "key_1", unique: true, background: true, safe: null } ], ordered: true, writeConcern: { w: 1 } } keyUpdates:0 writeConflicts:0 numYields:0 reslen:194 locks:{ Global: { acquireCount: { w: 1 } }, MMAPV1Journal: { acquireCount: { w: 2 } }, Database: { acquireCount: { W: 1 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 496 } } } 2ms
+2015-08-15T22:14:04.695+0530 I QUERY    [conn2] query enricherDB.inits planSummary: EOF ntoreturn:1000 ntoskip:0 nscanned:0 nscannedObjects:0 keyUpdates:0 writeConflicts:0 numYields:0 nreturned:0 reslen:20 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 0ms
+2015-08-15T22:14:22.540+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T22:15:22.541+0530 I STORAGE  [DataFileSync] flushing mmaps took 7ms  for 4 files
+2015-08-15T22:16:01.276+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65492 #7 (6 connections now open)
+2015-08-15T22:16:01.276+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65493 #8 (7 connections now open)
+2015-08-15T22:16:01.277+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65494 #9 (8 connections now open)
+2015-08-15T22:16:01.278+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65495 #10 (9 connections now open)
+2015-08-15T22:16:01.278+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65496 #11 (10 connections now open)
+2015-08-15T22:16:01.279+0530 I COMMAND  [conn7] command system.$cmd command: isMaster { ismaster: true } keyUpdates:0 writeConflicts:0 numYields:0 reslen:178 locks:{} 0ms
+2015-08-15T22:16:01.300+0530 I COMMAND  [conn8] command EnricherDB.$cmd command: listCollections { listCollections: true, filter: {}, cursor: {} } keyUpdates:0 writeConflicts:0 numYields:0 reslen:240 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { R: 1 } } } 9ms
+2015-08-15T22:16:17.004+0530 I QUERY    [conn3] query enricherDB.inits planSummary: EOF ntoreturn:1000 ntoskip:0 nscanned:0 nscannedObjects:0 keyUpdates:0 writeConflicts:0 numYields:0 nreturned:0 reslen:20 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 0ms
+2015-08-15T22:16:17.180+0530 I NETWORK  [conn7] end connection 127.0.0.1:65492 (9 connections now open)
+2015-08-15T22:16:17.180+0530 I NETWORK  [conn8] end connection 127.0.0.1:65493 (8 connections now open)
+2015-08-15T22:16:17.181+0530 I NETWORK  [conn9] end connection 127.0.0.1:65494 (7 connections now open)
+2015-08-15T22:16:17.181+0530 I NETWORK  [conn11] end connection 127.0.0.1:65496 (7 connections now open)
+2015-08-15T22:16:17.183+0530 I NETWORK  [conn10] end connection 127.0.0.1:65495 (5 connections now open)
+2015-08-15T22:16:17.185+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65506 #12 (6 connections now open)
+2015-08-15T22:16:17.187+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65507 #13 (7 connections now open)
+2015-08-15T22:16:17.188+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65508 #14 (8 connections now open)
+2015-08-15T22:16:17.192+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65509 #15 (9 connections now open)
+2015-08-15T22:16:17.193+0530 I COMMAND  [conn12] command system.$cmd command: isMaster { ismaster: true } keyUpdates:0 writeConflicts:0 numYields:0 reslen:178 locks:{} 0ms
+2015-08-15T22:16:17.196+0530 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:65510 #16 (10 connections now open)
+2015-08-15T22:16:17.200+0530 I COMMAND  [conn13] command EnricherDB.$cmd command: listCollections { listCollections: true, filter: {}, cursor: {} } keyUpdates:0 writeConflicts:0 numYields:0 reslen:240 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { R: 1 } } } 1ms
+2015-08-15T22:16:22.538+0530 I STORAGE  [DataFileSync] flushing mmaps took 4ms  for 4 files

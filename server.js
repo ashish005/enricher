@@ -31,10 +31,9 @@ server.get('/', function (req, res) {
 
 server.use('/', express.static(__dirname + '/'));
 
-mongoose.connect('mongodb://localhost:27017/enricherDB', function(error, db) {
-    console.log("mongo connected");
-    console.log('error: ' + error);
-    console.log('success: ' + db);
+mongoose.connect('mongodb://127.0.0.1:27017/enricherDB', function(error, db) {
+    console.log('mongo error: ' + error);
+    console.log('mongo success: ' + db);
 });
 
 /*// Create the http server.

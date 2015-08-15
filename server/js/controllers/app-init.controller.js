@@ -31,7 +31,8 @@ appInitController = function(router, mongoose) {
                 _resp.fundInfo = [];
             }else {
                 _resp.menu = [];
-                _resp.fundInfo = [{"id": 1, "amc_name": "Others", "amc_url": "NULL", "transcation_link": "NULL"},
+                _resp.fundInfo = [
+                    {"id": 1, "amc_name": "Others", "amc_url": "NULL", "transcation_link": "NULL"},
                     {
                         "id": 10,
                         "amc_name": "DSP BlackRock Mutual Fund",
