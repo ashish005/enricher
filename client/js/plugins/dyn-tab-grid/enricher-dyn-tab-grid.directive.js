@@ -3,7 +3,7 @@
  */
 (function () {
     "use strict";
-    define(['enricher', 'uiGrid'], function (app) {
+    define(['enricher'], function (app) {
         app.directive('enricherDynTabGrid', function() {
             return {
                 restrict: 'AE',

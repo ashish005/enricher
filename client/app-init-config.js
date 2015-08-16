@@ -21,6 +21,7 @@ require.config({
         metisMenu:'assets/libs/plugins/metisMenu/jquery.metisMenu',
         slimscroll:'assets/libs/plugins/slimscroll/jquery.slimscroll.min',
         chosenJquery:'assets/libs/plugins/chosen/chosen.jquery',
+        jszip:'assets/libs/plugins/excel-import-export/jszip.min',
         //chosenJquery:'//cdnjs.cloudflare.com/ajax/libs/chosen/1.0/chosen.jquery.min',
 
         'enricher-core':'js/core/core.directives',
@@ -38,7 +39,8 @@ require.config({
         chatWindow:_basePath.plugins + 'chat-window/chat-window',
         fundFilters:_basePath.plugins + 'fund-filters/fund-filters.directive',
         fundFilterGrid:_basePath.plugins + 'filter-grid/filter-grid.directive',
-        watchlist:_basePath.plugins + 'watchlist/watchlist.directive'
+        watchlist:_basePath.plugins + 'watchlist/watchlist.directive',
+        excelImportExport:_basePath.plugins +'excel-import-export/enricher-excel-plugin'
     },
     shim: {
         angularAMD: ['angular'],

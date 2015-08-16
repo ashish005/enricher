@@ -39,8 +39,8 @@
                 .when('/nfos', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
                 .when('/dividends', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
                 .when('/indices', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
-                .when('/schemeSummary', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
-                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.default.defaultFilterGrid))
+                .when('/schemeSummary', angularAMD.route(_pluginOptions.default.dynamicFilterGrid))
+                .when('/schemeSummary/:name', angularAMD.route(_pluginOptions.default.dynamicFilterGrid))
 
 
                 .when('/admin/home', angularAMD.route(_pluginOptions.admin.home))

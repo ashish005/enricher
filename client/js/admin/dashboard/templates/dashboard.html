@@ -1,4 +1,5 @@
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="dashboardController" ng-init="initDashboard()">
+    <div excel-import-exort callback-data="excelInformation"></div>
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -7,7 +8,11 @@
                     <div ibox-tools></div>
                 </div>
                 <div class="ibox-content">
-                    <div class="gridStyle" ng-grid="gridInfo"></div>
+                    <select name="operatorName" ng-model="activeSheet" class="form-control" required ng-change="showActiveInfo(activeSheet)">
+                        <option value=""></option>
+                        <option ng-selected="activeSheet == option.key" ng-repeat="option in excelTabsName  track by option.key" value="{{option.key}}">{{option.key}}</option>
+                    </select>
+                    <div class="gridStyle"  ui-grid="ngOptions"></div>
                 </div>
             </div>
         </div>
