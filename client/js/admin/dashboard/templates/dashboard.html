@@ -7,12 +7,15 @@
                     <h5>Get All DB Information Here</h5>
                     <div ibox-tools></div>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content" ng-if="'json'== excelActiveForm">
                     <select name="operatorName" ng-model="activeSheet" class="form-control" required ng-change="showActiveInfo(activeSheet)">
                         <option value=""></option>
                         <option ng-selected="activeSheet == option.key" ng-repeat="option in excelTabsName  track by option.key" value="{{option.key}}">{{option.key}}</option>
                     </select>
                     <div class="gridStyle"  ui-grid="ngOptions"></div>
+                </div>
+                <div class="ibox-content" ng-if="'json' != excelActiveForm">
+                    <pre id="out"></pre>
                 </div>
             </div>
         </div>

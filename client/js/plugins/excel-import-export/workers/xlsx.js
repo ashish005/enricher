@@ -11525,6 +11525,7 @@ var XLSX = {};
         var cols = new Array(r.e.c-r.s.c+1);
         var out = new Array(r.e.r-r.s.r-offset+1);
         var outi = 0;
+        var _header = {};
         for(C = r.s.c; C <= r.e.c; ++C) {
             cols[C] = encode_col(C);
             val = sheet[cols[C] + rr];
@@ -11535,6 +11536,7 @@ var XLSX = {};
                 default:
                     if(val === undefined) continue;
                     hdr[C] = format_cell(val);
+                    _header[cols[C]] = hdr[C];
             }
         }
 
@@ -11558,14 +11560,15 @@ var XLSX = {};
                     default: throw 'unrecognized type ' + val.t;
                 }
                 if(v !== undefined) {
-                    row[hdr[C]] = raw ? v : format_cell(val,v);
+                    //row[hdr[C]] = raw ? v : format_cell(val,v);//Ashish Channges
+                    row[cols[C]] = raw ? v : format_cell(val,v);
                     isempty = false;
                 }
             }
             if(isempty === false || header === 1) out[outi++] = row;
         }
         out.length = outi;
-        return out;
+        return { header: _header, body: out};
     }
 
     function sheet_to_row_object_array(sheet, opts) { return sheet_to_json(sheet, opts != null ? opts : {}); }

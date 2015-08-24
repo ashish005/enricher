@@ -3,7 +3,7 @@
  */
 (function () {
     "use strict";
-    define(['enricher', 'js/plugins/excel-import-export/shim', 'js/plugins/excel-import-export/jszip', 'js/plugins/excel-import-export/xlsx', 'js/plugins/excel-import-export/ods'], function (app) {
+    define(['enricher', 'js/plugins/excel-import-export/workers/shim', 'js/plugins/excel-import-export/workers/jszip', 'js/plugins/excel-import-export/workers/xlsx', 'js/plugins/excel-import-export/workers/ods'], function (app) {//
         app.directive('excelImportExort', function() {
             return {
                 restrict: 'AE',
@@ -125,7 +125,7 @@
                         var result = {};
                         workbook.SheetNames.forEach(function (sheetName) {
                             var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-                            if (roa.length > 0) {
+                            if (roa && roa.body && roa.body.length > 0) {
                                 result[sheetName] = roa;
                             }
                         });
@@ -180,9 +180,6 @@
                                 output = to_csv(wb);
                         };
                         scope.$evalAsync(scope.callbackData()(_activeOption, output));
-                        /*if (out.innerText === undefined) out.textContent = output;
-                        else out.innerText = output;
-                        if (typeof console !== 'undefined') console.log("output", new Date());*/
                     }
 
                     var drop = document.getElementById('drop');

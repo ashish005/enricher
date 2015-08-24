@@ -8,29 +8,35 @@
                 $scope.ngOptions= { columnDefs:[], data:[] };
                 var _data;
                 $scope.excelInformation = function(_activeOption, data){
-                    _data = JSON.parse(data);
-                    $scope.excelTabsName=[];
-                    angular.forEach(_data, function(item, key){
-                        $scope.excelTabsName.push({key:key});
-                    });
+                    $scope.excelActiveForm = _activeOption;
+                   if('json' == _activeOption) {
+                       _data = JSON.parse(data);
+                       $scope.excelTabsName = [];
+                       angular.forEach(_data, function (item, key) {
+                           $scope.excelTabsName.push({key: key});
+                       });
+                   }else{
+                       if (out.innerText === undefined) {
+                           out.textContent = data;
+                       }
+                       else {
+                           out.innerText = data;
+                       }
+                   }
                 };
 
                 $scope.showActiveInfo = function (activeSheet){
                     var _gridData = _data[activeSheet];
-                    $scope.ngOptions.columnDefs = [];
-                    var _firstRowInfo  = _gridData[0];
-                    if(_gridData.length>0 && _firstRowInfo){
+                    if(_gridData.body && _gridData.body.length>0)
+                    {
+                        var _firstRowInfo  = _gridData.header;
+                        $scope.ngOptions =  { data:[], columnDefs :[]};
+
                         angular.forEach(_firstRowInfo, function(item, key){
-                            try
-                            {
-                                var _key = key.replace(/([@"\W+"])/g,"");
-                                $scope.ngOptions.columnDefs.push({name:key, width: 'auto'});
-                            }catch(err){
-                                console.log(key);
-                            }
+                            $scope.ngOptions.columnDefs.push({field:key, displayName:item});
                         });
+                        $scope.ngOptions.data =  _gridData.body;
                     }
-                    $scope.ngOptions.data =  _data[activeSheet];
                     /*if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
                         $scope.$apply();
                     }*/
